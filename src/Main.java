@@ -4,5 +4,6 @@ public class Main {
         System.out.println("Hello World!");
 
         System.out.println("Ceci est un test");
+        System.out.println("Ceci est un second test");
     }
 }
