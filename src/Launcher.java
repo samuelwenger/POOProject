@@ -16,6 +16,7 @@ public class Launcher extends JFrame {
         //Définir le Layout de la page
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(400,700));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //Définir les apps
         String[] appsName = new String[nbreApp];
