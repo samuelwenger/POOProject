@@ -1,11 +1,11 @@
 public class Main {
 
-    public static void main(String[] args) {
-      
-        Launcher launcher = new Launcher();
+                public static void main(String[] args) {
+
+            Launcher launcher = new Launcher();
         launcher.setVisible(true);
 
-        System.out.println("Test");
+        System.out.println("Test 3");
       
     }
 }
