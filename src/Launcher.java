@@ -3,8 +3,7 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.awt.*;
 
 public class Launcher extends JFrame {
-    
-    <!-- Je suis dans dev-->
+
 
     private int nbreApp = 2;
 
@@ -38,8 +37,7 @@ public class Launcher extends JFrame {
         add(icons, BorderLayout.CENTER);
 
         pack();
-        
-        test();
+
     }
 
 }
