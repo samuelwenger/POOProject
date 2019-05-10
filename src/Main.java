@@ -5,7 +5,7 @@ public class Main {
             Launcher launcher = new Launcher();
         launcher.setVisible(true);
 
-        System.out.println("Test 3");
+        System.out.println("Salut");
       
     }
 }
