@@ -5,7 +5,6 @@ public class Main {
         Launcher launcher = new Launcher();
         launcher.setVisible(true);
 
-        launcher
       
     }
 }
