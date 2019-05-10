@@ -31,6 +31,7 @@ public class Launcher extends JFrame {
 
         //Définir le Layout de la page
         setPreferredSize(new Dimension(400,700));
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //ajout de la barre supérieur
@@ -68,6 +69,7 @@ public class Launcher extends JFrame {
 
 
         pack();
+
 
     }
 
