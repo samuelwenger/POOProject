@@ -36,6 +36,8 @@ public class Launcher extends JFrame {
         add(icons, BorderLayout.CENTER);
 
         pack();
+        
+        test();
     }
 
 }
