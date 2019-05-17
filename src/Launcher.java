@@ -1,29 +1,42 @@
 import javax.swing.*;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Launcher extends JFrame {
+public class Launcher extends JFrame{
 
-    private int nbreApp = 2;
+    //formatteddate
+    Date datesystem = new Date();
+    DateFormat heureFormat = new SimpleDateFormat("HH:mm");
+    String formattedtime = heureFormat.format(datesystem);
+
+        //date
+    DateFormat dateFormat = new SimpleDateFormat("EEE dd MMMM");
+    String formatteddate = dateFormat.format(datesystem);
+
 
     //header
-    private JLabel heure = new JLabel("14:18");
+    private JLabel heure = new JLabel(formattedtime);
     private JLabel batterie = new JLabel("B");
     private JLabel wifi = new JLabel ("W");
     private JLabel reseau = new JLabel("R");
-        //Panels
+    //Panels
     private JPanel screen = new JPanel(new BorderLayout());
     private JPanel header = new JPanel(new GridLayout(1,2));
-    private JPanel footer = new JPanel();
-    private JPanel main = new JPanel();
-        //SousPanels
+    private JPanel footer = new JPanel(new GridLayout(1,4,10,0));
+    private JPanel main = new JPanel(new GridLayout(4,1));
+    //SousPanels
     private JPanel leftheader = new JPanel(new FlowLayout(FlowLayout.LEFT));
     private JPanel rightheader = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    private JLabel heureMain = new JLabel(formattedtime);
+    private JLabel dateMain = new JLabel(formatteddate);
 
 
-
-    private JButton[] appsButtons = new JButton[nbreApp];
-    private JPanel icons = new JPanel();
+    //Buttons
+    private JButton contact = new JButton();
+    private JButton galerie = new JButton();
+    private JButton appel = new JButton ();
 
 
 
@@ -44,10 +57,30 @@ public class Launcher extends JFrame {
         header.add(leftheader);
         header.add(rightheader);
 
+        //ajout du main
+        heureMain.setHorizontalAlignment(JLabel.CENTER);
+        heureMain.setVerticalAlignment(JLabel.BOTTOM);
+        heureMain.setFont(new Font("Bahnschrift", Font.PLAIN,75));
+
+        dateMain.setHorizontalAlignment(JLabel.CENTER);
+        dateMain.setVerticalAlignment(JLabel.TOP);
+        dateMain.setFont(new Font("Bahnschrift", Font.PLAIN,20));
+
+        main.add(heureMain);
+        main.add(dateMain);
+
+        //ajout du footer
+        footer.setPreferredSize(new Dimension(400,100));
+        contact.setIcon(new ImageIcon("C:\\Users\\rgall\\IdeaProjects\\POO-Projet-RGSW\\img\\contact.png"));
+        footer.add(contact);
+        footer.add(galerie);
+        footer.add(appel);
+
 
         screen.add(header, BorderLayout.NORTH);
-        screen.add(main, BorderLayout.CENTER);
         screen.add(footer, BorderLayout.SOUTH);
+        screen.add(main, BorderLayout.CENTER);
+
 
         header.setOpaque(false);
         main.setOpaque(false);
@@ -56,17 +89,8 @@ public class Launcher extends JFrame {
         rightheader.setOpaque(false);
 
         screen.setOpaque(true);
-        screen.setBackground(Color.RED);
+        screen.setBackground(Color.CYAN);
         add(screen);
-
-
-
-        //Définir les apps
-        //String[] appsName = new String[nbreApp];
-
-        //appsName[0] = "Contacts";
-       // appsName[1] = "Gallerie";
-
 
         pack();
 
