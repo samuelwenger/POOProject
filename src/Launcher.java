@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Launcher extends JFrame{
+public class Launcher extends JPanel {
+
+    private MainFrame mainFrame;
 
     //formatteddate
     Date datesystem = new Date();
@@ -40,12 +44,9 @@ public class Launcher extends JFrame{
 
 
 
-    public Launcher () {
+    public Launcher (MainFrame mainFrame) {
 
-        //Définir le Layout de la page
-        setPreferredSize(new Dimension(400,700));
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.mainFrame = mainFrame;
 
         //ajout de la barre supérieur
 
@@ -76,6 +77,9 @@ public class Launcher extends JFrame{
         footer.add(galerie);
         footer.add(appel);
 
+        contact.addActionListener(new ClicContactApp());
+        galerie.addActionListener(new ClicGalleryApp());
+
 
         screen.add(header, BorderLayout.NORTH);
         screen.add(footer, BorderLayout.SOUTH);
@@ -90,11 +94,29 @@ public class Launcher extends JFrame{
 
         screen.setOpaque(true);
         screen.setBackground(Color.CYAN);
+
         add(screen);
 
-        pack();
+    }
 
+
+    public class ClicContactApp implements ActionListener {
+
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"ContactApp");
+        }
+    }
+
+    public class ClicGalleryApp implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"GalleryApp");
+        }
 
     }
+
+
 
 }
