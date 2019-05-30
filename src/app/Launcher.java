@@ -1,3 +1,5 @@
+package app;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -92,6 +94,7 @@ public class Launcher extends JPanel {
         leftheader.setOpaque(false);
         rightheader.setOpaque(false);
 
+        screen.setPreferredSize(new Dimension(400,700));
         screen.setOpaque(true);
         screen.setBackground(Color.CYAN);
 
@@ -104,7 +107,7 @@ public class Launcher extends JPanel {
 
          @Override
          public void actionPerformed(ActionEvent e) {
-            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"ContactApp");
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"app.ContactApp");
         }
     }
 
@@ -112,7 +115,7 @@ public class Launcher extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"GalleryApp");
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"test");
         }
 
     }

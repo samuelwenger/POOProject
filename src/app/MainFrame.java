@@ -1,3 +1,7 @@
+package app;
+
+import base.ContactGestion;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,22 +15,25 @@ public class MainFrame extends JFrame {
     private Launcher launcher = new Launcher(this);
     private ContactApp contactApp = new ContactApp(this);
     private GalleryApp galleryApp = new GalleryApp(this);
+    private ContactGestion salut = new ContactGestion();
 
 
     public MainFrame(){
 
         // Paramètres d'affichage de la fenêtre
-        setPreferredSize(new Dimension(400,700));
+        setSize(new Dimension(400,700));
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // Ajouter les différents pannels au CardLayout
-        contentPanel.add(launcher,"Launcher");
-        contentPanel.add(contactApp, "ContactApp");
-        contentPanel.add(galleryApp, "GalleryApp");
+        contentPanel.add(launcher,"app.Launcher");
+        contentPanel.add(contactApp, "app.ContactApp");
+        contentPanel.add(galleryApp, "app.GalleryApp");
+        contentPanel.add(salut, "test");
 
-        // Afficher le pannel Launcher
-        cardLayout.show(contentPanel,"Launcher");
+
+        // Afficher le pannel app.Launcher
+        cardLayout.show(contentPanel,"app.Launcher");
 
         // Ajouter le conteneur principal à la fenêtre
         add(contentPanel);

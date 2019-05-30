@@ -1,3 +1,5 @@
+package app;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,7 +44,7 @@ public class ContactApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"Launcher");
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"app.Launcher");
         }
     }
 
