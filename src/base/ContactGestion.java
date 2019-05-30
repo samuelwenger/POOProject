@@ -25,7 +25,7 @@ public class ContactGestion extends JPanel {
     //Création comcposant pour titlepanel
     private JButton backButton = new JButton("Back:))");
     private JButton saveButton = new JButton("Save :)");
-    private JLabel labelTitleApp = new JLabel("Salut");
+    private JLabel labelTitleApp = new JLabel();
 
     //Création panels
     private JPanel formPanel = new JPanel(new GridLayout(4,2,0,40));
@@ -35,7 +35,9 @@ public class ContactGestion extends JPanel {
     private JPanel titlePanel = new JPanel(new BorderLayout());
     private JPanel contentPanel = new JPanel(new BorderLayout());
 
-    public ContactGestion(){
+    public ContactGestion(String nomapplication){
+
+        labelTitleApp.setText(nomapplication);
 
         //Ajout des composants au paneltitle
         labelTitleApp.setHorizontalAlignment(JLabel.CENTER);
@@ -73,4 +75,23 @@ public class ContactGestion extends JPanel {
 
     }
 
+    public JButton getBackButton () {
+        return backButton;
+    }
+    public JButton getSaveButton(){
+        return saveButton;
+    }
+
+    public String getContactName(){
+        return fieldName.getText();
+    }
+    public String getContactFirstname(){
+        return fieldFirstname.getText();
+    }
+    public String getContactTel(){
+        return fieldTel.getText();
+    }
+    public String getContactMail(){
+        return fieldMail.getText();
+    }
 }

@@ -1,6 +1,5 @@
 package app;
 
-import base.ContactGestion;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +14,6 @@ public class MainFrame extends JFrame {
     private Launcher launcher = new Launcher(this);
     private ContactApp contactApp = new ContactApp(this);
     private GalleryApp galleryApp = new GalleryApp(this);
-    private ContactGestion salut = new ContactGestion();
 
 
     public MainFrame(){
@@ -29,7 +27,6 @@ public class MainFrame extends JFrame {
         contentPanel.add(launcher,"app.Launcher");
         contentPanel.add(contactApp, "app.ContactApp");
         contentPanel.add(galleryApp, "app.GalleryApp");
-        contentPanel.add(salut, "test");
 
 
         // Afficher le pannel app.Launcher

@@ -115,7 +115,7 @@ public class Launcher extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"test");
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"app.GalleryApp");
         }
 
     }
