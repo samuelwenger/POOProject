@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class ContactGestion extends JPanel {
 
+    Validation validation = new Validation();
+
     //Création des divers labels
     private JLabel labelName = new JLabel("Nom");
     private JLabel labelFirstname = new JLabel("Prenom");
@@ -75,6 +77,35 @@ public class ContactGestion extends JPanel {
 
     }
 
+
+    public void clearFields() {
+        fieldName.setText("");
+        fieldFirstname.setText("");
+        fieldTel.setText("");
+        fieldMail.setText("");
+    }
+
+    public void resetFieldsColor() {
+        validation.resetValidation(fieldName);
+        validation.resetValidation(fieldFirstname);
+        validation.resetValidation(fieldTel);
+        validation.resetValidation(fieldMail);
+    }
+
+    public boolean checkFields() {
+
+        Boolean res = true;
+
+        if(validation.isNotEmpty(fieldName)==false)
+            res = false;
+        if(validation.isNotEmpty(fieldFirstname)==false)
+            res = false;
+        if(validation.isNotEmpty(fieldTel)==false)
+            res = false;
+
+        return res;
+    }
+
     public JButton getBackButton () {
         return backButton;
     }
@@ -94,4 +125,5 @@ public class ContactGestion extends JPanel {
     public String getContactMail(){
         return fieldMail.getText();
     }
+
 }

@@ -17,4 +17,21 @@ public class Contact implements Serializable {
         this.tel=tel;
         this.mail=mail;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public String getMail() {
+        return mail;
+    }
 }
