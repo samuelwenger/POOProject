@@ -1,9 +1,11 @@
 package app;
 
 import base.ContactGestion;
+import base.OwnPanel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.text.View;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +36,7 @@ public class ContactApp extends JPanel {
 
     // Espace pour affichage des contacts
     private JPanel contactsList = new JPanel();
-    private JScrollPane contactsScrollPane = new JScrollPane(contactsList);
+    private JScrollPane contactsScrollPane = new JScrollPane();
 
 
     // Applications
@@ -43,8 +45,13 @@ public class ContactApp extends JPanel {
 
     public ContactApp(MainFrame mainFrame) {
 
+
         this.mainFrame = mainFrame;
         deserializeObject();
+
+        updateContacts();
+       // afficheContacts();
+
 
         back.addActionListener(new Back());
         addContact.addActionListener(new MoveToAddContact());
@@ -58,15 +65,11 @@ public class ContactApp extends JPanel {
 
 
         // Ajouter les éléments au panel des contacts
-        contactsPanel.setLayout(new BoxLayout(contactsPanel,BoxLayout.Y_AXIS));
+       // contactsList.setLayout(new BoxLayout(contactsList,BoxLayout.Y_AXIS));
 
-        contactsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        contactsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         contactsPanel.add(contactsScrollPane, BorderLayout.CENTER);
 
-        JButton test = new JButton("Test");
-        contactsList.add(test);
-
-        afficheContacts();
 
 
         // Ajouter les éléments au panel d'accueil
@@ -89,14 +92,18 @@ public class ContactApp extends JPanel {
 
     public void afficheContacts() {
         ArrayList<Contact> contactsTries = (ArrayList<Contact>) contacts.clone();
-   //     contactsTries = TriageContacts(contactsTries);
+        contactsTries = TriageContacts(contactsTries);
 
         JButton contact;
 
         for(int i=0; i<contactsTries.size();i++){
             contact = new JButton(contactsTries.get(i).getFirstname() + " " + contactsTries.get(i).getName());
+            contact.setPreferredSize(new Dimension(380,80));
 
             contactsList.add(contact);
+            contact.addActionListener(new EditContact(contactsTries.get(i)));
+
+
           //  contact.addActionListener(new ContactClic(contactSorted.get(i)));
         }
 
@@ -116,12 +123,25 @@ public class ContactApp extends JPanel {
         return contacts;
     }
 
+
+    public void updateContacts(){
+        contactsList.removeAll();
+
+        int width = contacts.size()*90;
+        contactStartPanel.setPreferredSize(new Dimension(400,700));
+        contactsList.setPreferredSize(new Dimension(380,width));
+        contactsScrollPane.setBounds(0,0,400,600);
+        contactsScrollPane.setViewportView(contactsList);
+
+        afficheContacts();
+
+    }
+
     public class AddContact extends ContactGestion {
         public AddContact(){
             super("Ajouter un contact");
-            contactCardLayout.show(contactContentPanel,"Start");
 
-            getBackButton().addActionListener(new BackToContactFromAdd());
+            getBackButton().addActionListener(new BackToContact());
             getSaveButton().addActionListener(new SaveNewContact());
 
         }
@@ -131,6 +151,85 @@ public class ContactApp extends JPanel {
             Contact newcontact = new Contact(id,getContactName(), getContactFirstname(), getContactTel(), getContactMail());
             contacts.add(newcontact);
             serializeObject();
+        }
+
+    }
+
+
+    public class ViewContact extends JPanel {
+        // Création des éléments
+        private JButton back = new JButton("<");
+        private JButton edit = new JButton("E");
+        private JLabel name = new JLabel();
+        private JLabel tel = new JLabel();
+        private JLabel mail = new JLabel();
+        private ImageIcon image = new ImageIcon("img/Background.jpg");
+
+        // Création des pannels
+        private JPanel contentPanel = new JPanel(new BorderLayout());
+
+        private OwnPanel panelImage = new OwnPanel(image.getImage());
+        private JPanel panelBack = new JPanel();
+        private JPanel panelEdit = new JPanel();
+
+        private JLayeredPane layeredPane = new JLayeredPane();
+
+        private JPanel up = new JPanel();
+        private JPanel infos = new JPanel(new GridLayout(3,1));
+
+
+        public ViewContact(Contact contact) {
+
+            contentPanel.setPreferredSize(new Dimension(400,700));
+
+
+            back.addActionListener(new BackToContact());
+         // edit.addActionListener(new EditContact());
+
+            name.setText(contact.getFirstname() + " " + contact.getName());
+            tel.setText(contact.getTel());
+            mail.setText(contact.getMail());
+
+            // Panneau du haut
+/**
+            panelImage.add(new JLabel("salut"));
+            panelBack.add(back);
+            panelEdit.add(edit);
+
+            panelBack.setBounds(300,300,100,100);
+            panelEdit.setBounds(380,10,100,100);
+
+            layeredPane.setSize(new Dimension(400,350));
+            layeredPane.add(panelImage,1);
+            layeredPane.add(panelBack,2);
+
+            up.add(layeredPane);
+ layeredPane.add(panelEdit, 3);
+ */
+
+            panelImage.setPreferredSize(new Dimension(400,300));
+
+            up.add(panelImage);
+            up.add(back);
+            up.add(edit);
+
+            up.setBackground(Color.RED);
+
+            // Infos contact
+            infos.add(name);
+            infos.add(tel);
+            infos.add(mail);
+
+            // Ajout au panel général
+            contentPanel.add(up,BorderLayout.NORTH);
+            contentPanel.add(infos,BorderLayout.CENTER);
+
+            add(contentPanel);
+
+           // add(up);
+
+            up.setPreferredSize(new Dimension(400,350));
+
         }
 
     }
@@ -174,7 +273,7 @@ public class ContactApp extends JPanel {
 
 
 
-    public class BackToContactFromAdd implements ActionListener {
+    public class BackToContact implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -204,6 +303,29 @@ public class ContactApp extends JPanel {
     }
 
 
+
+    public class EditContact implements ActionListener {
+
+        private Contact contact;
+
+        public EditContact(Contact contact){
+            this.contact = contact;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ViewContact viewContact = new ViewContact(contact);
+
+            System.out.println("Tu as appuyé sur " + contact);
+            contactContentPanel.add(viewContact,"View");
+
+            contactCardLayout.show(contactContentPanel,"View");
+
+        }
+
+    }
+
+
     public class SaveNewContact implements ActionListener{
 
         @Override
@@ -216,7 +338,7 @@ public class ContactApp extends JPanel {
                 addContactApp.clearFields();
                 addContactApp.resetFieldsColor();
                 contactCardLayout.show(contactContentPanel, "Start");
-
+                updateContacts();
             }
         }
     }
