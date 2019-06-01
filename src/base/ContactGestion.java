@@ -125,5 +125,17 @@ public class ContactGestion extends JPanel {
     public String getContactMail(){
         return fieldMail.getText();
     }
+    public JTextField getFieldName(){
+        return fieldName;
+    }
+    public JTextField getFieldFirstname(){
+        return fieldFirstname;
+    }
+    public JTextField getFieldTel(){
+        return fieldTel;
+    }
+    public JTextField getFieldMail(){
+        return fieldMail;
+    }
 
 }

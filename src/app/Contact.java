@@ -19,6 +19,9 @@ public class Contact implements Serializable {
     }
 
 
+    public int getId(){
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -33,5 +36,18 @@ public class Contact implements Serializable {
 
     public String getMail() {
         return mail;
+    }
+
+    public void setName(String name){
+        this.name=name;
+    }
+    public void setFirstname(String firstname){
+        this.firstname=firstname;
+    }
+    public void setTel(String tel){
+        this.tel=tel;
+    }
+    public void setMail(String mail){
+        this.mail=mail;
     }
 }
