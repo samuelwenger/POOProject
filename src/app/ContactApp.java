@@ -4,77 +4,69 @@ import base.ContactGestion;
 import base.OwnPanel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.View;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+
+/**
+ * Cette classe gère l'application Contact
+ */
 
 public class ContactApp extends JPanel {
 
     private MainFrame mainFrame;
-
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
-
-    // CardLayout pour l'application
-    private CardLayout contactCardLayout = new CardLayout();
-    private JPanel contactContentPanel = new JPanel(contactCardLayout);
-
-    // Panels de la page d'accueil de l'application
-    private JPanel contactStartPanel = new JPanel(new BorderLayout());
-    private JPanel titrePanel = new JPanel(new BorderLayout());
-    private JPanel contactsPanel = new JPanel(new BorderLayout());
-
-    // Elements de l'application Contact
-    private JButton back = new JButton("Quitter");
-    private JLabel titreApp = new JLabel("Contacts");
-    private JButton addContact = new JButton("+");
-
-    // Espace pour affichage des contacts
-    private JPanel contactsList = new JPanel();
-    private JScrollPane contactsScrollPane = new JScrollPane();
-
 
     // Applications
     private AddContact addContactApp = new AddContact();
     private ModifyContact modifyContact;
     private ViewContact viewContact;
 
+    // CardLayout de l'app
+    private CardLayout contactCardLayout = new CardLayout();
+    private JPanel contactContentPanel = new JPanel(contactCardLayout);
+
+    // Ecran d'accueil
+    private JPanel contactStartPanel = new JPanel(new BorderLayout());
+
+    // Titre
+    private JPanel titrePanel = new JPanel(new BorderLayout());
+
+    private JButton back = new JButton("Quitter");
+    private JLabel titreApp = new JLabel("Contacts");
+    private JButton addContact = new JButton("+");
+
+    // Liste contacts
+    private JPanel contactsPanel = new JPanel(new BorderLayout());
+
+    private JPanel contactsList = new JPanel();
+    private JScrollPane contactsScrollPane = new JScrollPane();
+
+
 
     public ContactApp(MainFrame mainFrame) {
 
-
         this.mainFrame = mainFrame;
         deserializeObject();
-
         updateContacts();
-       // afficheContacts();
 
-
+        // Ajout des ActionListener
         back.addActionListener(new Back());
         addContact.addActionListener(new MoveToAddContact());
 
-        // Ajouter les éléments au panel titre
+        // Ajout des éléments aux panels
+        // Panel titre
         titreApp.setHorizontalAlignment(JLabel.CENTER);
-
         titrePanel.add(back, BorderLayout.WEST);
         titrePanel.add(titreApp, BorderLayout.CENTER);
         titrePanel.add(addContact, BorderLayout.EAST);
 
-
-        // Ajouter les éléments au panel des contacts
-       // contactsList.setLayout(new BoxLayout(contactsList,BoxLayout.Y_AXIS));
-
+        // Panel des contacts
         contactsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         contactsPanel.add(contactsScrollPane, BorderLayout.CENTER);
 
-
-
-        // Ajouter les éléments au panel d'accueil
+        // Panel de l'application
         contactStartPanel.add(titrePanel, BorderLayout.NORTH);
         contactStartPanel.add(contactsPanel, BorderLayout.CENTER);
 
@@ -86,11 +78,16 @@ public class ContactApp extends JPanel {
         // Afficher le JPanel d'accueil
         contactCardLayout.show(contactContentPanel,"Start");
 
-        // Ajouter le conteneur au JPanel
+        // Ajouter le panel de l'application au JPanel principal
         add(contactContentPanel);
 
     }
 
+
+    /**
+     * Cette méthode permet l'affichage des contacts sur l'écran d'accueil de l'app
+     * en créant un bouton pour chaque contact.
+     */
 
     public void afficheContacts() {
         ArrayList<Contact> contactsTries = (ArrayList<Contact>) contacts.clone();
@@ -104,16 +101,16 @@ public class ContactApp extends JPanel {
 
             contactsList.add(contact);
             contact.addActionListener(new ShowContact(contactsTries.get(i)));
-
-
-          //  contact.addActionListener(new ContactClic(contactSorted.get(i)));
         }
-
-        System.out.println("Coucou");
-
-
     }
 
+
+    /**
+     * Cette méthode permet de trier l'ArrayList contenant les contacts pour retourner une ArrayList triée par ordre alphabétique des prénoms.
+     *
+     * @param contacts
+     * @return
+     */
 
     public ArrayList<Contact> TriageContacts (ArrayList<Contact> contacts) {
         Collections.sort(contacts, new Comparator<Contact>() {
@@ -126,6 +123,10 @@ public class ContactApp extends JPanel {
     }
 
 
+    /**
+     * Cette méthode permet de mettre à jour l'affichage des contacts sur l'écran d'accueil de l'application
+     */
+
     public void updateContacts(){
         contactsList.removeAll();
 
@@ -136,26 +137,32 @@ public class ContactApp extends JPanel {
         contactsScrollPane.setViewportView(contactsList);
 
         afficheContacts();
-
     }
 
+
+    /**
+     * Cette classe gère l'écran permettant la saisie d'un nouveau contact
+     */
     public class AddContact extends ContactGestion {
         public AddContact(){
             super("Ajouter un contact");
 
             getBackButton().addActionListener(new BackToContact());
             getSaveButton().addActionListener(new SaveNewContact());
-
         }
 
+        /**
+         * Cette méthode permet la sauvegarde du contact ajouté
+         * en enregistrant les données dans l'ArrayList
+         */
         public void saveNewContact() {
             int id;
 
-            if(contacts.size()==0){
+            if(contacts.size()==0)
                 id=0;
-            }
             else
                 id=contacts.get(contacts.size()-1).getId()+1;
+
             Contact newcontact = new Contact(id,getContactName(), getContactFirstname(), getContactTel(), getContactMail());
             contacts.add(newcontact);
             serializeObject();
@@ -164,72 +171,68 @@ public class ContactApp extends JPanel {
     }
 
 
+    /**
+     * Cette classe gère l'écran permettant la vue détaillée d'un contact
+     */
     public class ViewContact extends JPanel {
-        // Création des éléments
-        private JButton back = new JButton("<");
-        private JButton edit = new JButton("E");
-        private JButton delete= new JButton("Delete");
+
+        private JPanel contentPanel = new JPanel(new BorderLayout());
+
+        // Infos contact
         private JLabel name = new JLabel();
         private JLabel tel = new JLabel();
         private JLabel mail = new JLabel();
+
+        private JPanel infos = new JPanel(new GridLayout(3,1));
+
+        // Titre + image
+        private JButton back = new JButton("<");
+        private JButton edit = new JButton("E");
+        private JButton delete= new JButton("Delete");
+        private OwnPanel buttonsright = new OwnPanel(new FlowLayout());
+        private OwnPanel buttons = new OwnPanel(new BorderLayout());
+
         private ImageIcon image = new ImageIcon("img/Background.jpg");
-
-        // Création des pannels
-        private JPanel contentPanel = new JPanel(new BorderLayout());
-
         private OwnPanel panelImage = new OwnPanel(image.getImage());
-        private JPanel panelBack = new JPanel();
-        private JPanel panelEdit = new JPanel();
-
-        private JLayeredPane layeredPane = new JLayeredPane();
 
         private JPanel up = new JPanel();
-        private JPanel infos = new JPanel(new GridLayout(3,1));
 
 
         public ViewContact(Contact contact) {
 
+            // Affichage
             contentPanel.setPreferredSize(new Dimension(400,700));
+            panelImage.setPreferredSize(new Dimension(400,300));
 
-
+            // Panel haut de l'écran
             back.addActionListener(new BackToContact());
             edit.addActionListener(new EditContact(contact));
             delete.addActionListener(new DeleteContact(contact));
 
+
+            buttonsright.add(edit);
+            buttonsright.add(delete);
+            buttons.add(back, BorderLayout.WEST);
+            buttons.add(buttonsright, BorderLayout.EAST);
+
+            up.setPreferredSize(new Dimension(400,350));
+
+            panelImage.add(buttons, BorderLayout.NORTH);
+
+            up.add(panelImage);
+
+
+
+            // Panel des données du contact
             name.setText(contact.getFirstname() + " " + contact.getName());
             tel.setText(contact.getTel());
             mail.setText(contact.getMail());
 
-            // Panneau du haut
-/**
-            panelImage.add(new JLabel("salut"));
-            panelBack.add(back);
-            panelEdit.add(edit);
-
-            panelBack.setBounds(300,300,100,100);
-            panelEdit.setBounds(380,10,100,100);
-
-            layeredPane.setSize(new Dimension(400,350));
-            layeredPane.add(panelImage,1);
-            layeredPane.add(panelBack,2);
-
-            up.add(layeredPane);
- layeredPane.add(panelEdit, 3);
- */
-
-            panelImage.setPreferredSize(new Dimension(400,300));
-
-            up.add(panelImage);
-            up.add(back);
-            up.add(edit);
-            up.add(delete);
-
-            up.setBackground(Color.RED);
-
-            // Infos contact
+            name.setFont(new Font("Bahnshrift",Font.BOLD,30));
             infos.add(name);
             infos.add(tel);
             infos.add(mail);
+
 
             // Ajout au panel général
             contentPanel.add(up,BorderLayout.NORTH);
@@ -237,28 +240,44 @@ public class ContactApp extends JPanel {
 
             add(contentPanel);
 
-           // add(up);
+        }
 
-            up.setPreferredSize(new Dimension(400,350));
-
+        /**
+         * Cette méthode permet la suppression d'un contact de l'ArrayList et appelle la méthode pour mettre à jour l'écran d'accueil de l'app
+         * @param contact
+         */
+        public void deleteContact(Contact contact){
+            contacts.remove(contact);
+            updateContacts();
         }
 
     }
 
+    /**
+     * Cette classe gère l'écran permettant la modification d'un contact de l'ArrayList
+     */
     public class ModifyContact extends ContactGestion{
 
         public ModifyContact(Contact contact){
-            super("Editcontact");
+            super("Editer un contact");
 
             getBackButton().addActionListener(new BackToViewContact());
             getSaveButton().addActionListener(new SaveModifiedContact(contact));
 
-            super.getFieldName().setText(contact.getName());
-            super.getFieldFirstname().setText(contact.getFirstname());
-            super.getFieldTel().setText(contact.getTel());
-            super.getFieldMail().setText(contact.getMail());
+            getFieldName().setText(contact.getName());
+            getFieldFirstname().setText(contact.getFirstname());
+            getFieldTel().setText(contact.getTel());
+            getFieldMail().setText(contact.getMail());
         }
 
+
+        /**
+         * Cette méthode met à jour l'objet Contact,
+         * puis appelle les méthodes permettant la serialisation et la
+         * mise à jour de l'écran d'accueil de l'application.
+         **
+         * @param contact
+         */
         public void updateObjectContact(Contact contact){
             contact.setName(getFieldName().getText());
             contact.setFirstname(getFieldFirstname().getText());
@@ -270,6 +289,10 @@ public class ContactApp extends JPanel {
 
     }
 
+
+    /**
+     * Cette méthode permet la sérialisation de l'ArrayList contenant tous les contacts.
+     */
     public void serializeObject()
     {
         try
@@ -286,9 +309,13 @@ public class ContactApp extends JPanel {
         }
     }
 
+
+    /**
+     * Cette méthode permet la désérialisation des données afin de récupérer les données déjà enregistrées.
+     * Les contacts déjà enregistrés sont récupérés dans une ArrayList
+     */
     public void deserializeObject() {
 
-        System.out.println("Je suis dans la méthode deserialize");
         try
         {
             FileInputStream fichier = new FileInputStream("serials/contactslist.ser");
@@ -303,12 +330,13 @@ public class ContactApp extends JPanel {
         catch (ClassNotFoundException e)
         {
             e.printStackTrace();
-
         }
     }
 
 
-
+    /**
+     * Cette classe gère l'écouteur permettant le retour à l'écran d'accueil.
+     */
     public class BackToContact implements ActionListener {
 
         @Override
@@ -319,6 +347,9 @@ public class ContactApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant le retour à l'écran d'affichage des détails d'un contact.
+     */
     public class BackToViewContact implements ActionListener {
 
         @Override
@@ -329,8 +360,10 @@ public class ContactApp extends JPanel {
         }
     }
 
-  //  public class
 
+    /**
+     * Cette classe gère l'écouteur permettant la sortie de l'application Contact et le retour au Launcher
+     */
     public class Back implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -339,7 +372,9 @@ public class ContactApp extends JPanel {
     }
 
 
-
+    /**
+     * Cette classe gère l'écouteur permettant d'accéder à l'écran d'ajout d'un contact
+     */
     public class MoveToAddContact implements ActionListener {
 
         @Override
@@ -349,7 +384,9 @@ public class ContactApp extends JPanel {
     }
 
 
-
+    /**
+     * Cette classe gère l'écouteur permettant d'accéder aux détails d'un contact
+     */
     public class ShowContact implements ActionListener {
 
         private Contact contact;
@@ -371,6 +408,9 @@ public class ContactApp extends JPanel {
 
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant d'accéder à l'écran d'édition d'un contact
+     */
     public class EditContact implements ActionListener{
 
         Contact contact;
@@ -381,7 +421,6 @@ public class ContactApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
             modifyContact= new ModifyContact(contact);
             contactContentPanel.add(modifyContact,"Edit");
             contactCardLayout.show(contactContentPanel,"Edit");
@@ -389,6 +428,10 @@ public class ContactApp extends JPanel {
 
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant la suppression d'un contact
+     * et le retour sur l'écran d'accueil de l'application.
+     */
     public class DeleteContact implements ActionListener{
 
         private Contact contact;
@@ -398,14 +441,16 @@ public class ContactApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            contacts.remove(contact);
-            updateContacts();
+            viewContact.deleteContact(contact);
             contactCardLayout.show(contactContentPanel,"Start");
         }
     }
 
 
+    /**
+     * Cette classe gère l'écouteur permettant la sauvegarde d'un nouveau contact
+     * et le retour sur l'écran d'accueil de l'application
+     */
     public class SaveNewContact implements ActionListener{
 
         @Override
@@ -417,12 +462,17 @@ public class ContactApp extends JPanel {
                 addContactApp.saveNewContact();
                 addContactApp.clearFields();
                 addContactApp.resetFieldsColor();
-                contactCardLayout.show(contactContentPanel, "Start");
                 updateContacts();
+                contactCardLayout.show(contactContentPanel, "Start");
+
             }
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant l'enregistrement des modifications
+     * et le retour sur la vue détaillée du contact.
+     */
     public class SaveModifiedContact implements ActionListener {
 
         Contact contact;
@@ -436,7 +486,6 @@ public class ContactApp extends JPanel {
 
             modifyContact.resetFieldsColor();
 
-
             if (modifyContact.checkFields() == true) {
                 modifyContact.updateObjectContact(contact);
                 modifyContact.clearFields();
@@ -444,6 +493,7 @@ public class ContactApp extends JPanel {
 
                 viewContact = new ViewContact(contact);
                 contactContentPanel.add(viewContact, "UpdatedView");
+
                 contactCardLayout.show(contactContentPanel, "UpdatedView");
             }
         }
