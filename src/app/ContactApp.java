@@ -44,7 +44,6 @@ public class ContactApp extends JPanel {
     private JScrollPane contactsScrollPane = new JScrollPane();
 
 
-
     public ContactApp(MainFrame mainFrame) {
 
         this.mainFrame = mainFrame;

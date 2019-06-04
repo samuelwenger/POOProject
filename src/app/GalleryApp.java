@@ -67,20 +67,16 @@ public class GalleryApp extends JPanel {
 
     public void affichePhotos(){
 
-        int width = (50%3) * 30;
-
-        gallerie.setPreferredSize(new Dimension(380,width));
+        gallerie.setSize(new Dimension(380,700));
 
         galleriePane.setViewportView(gallerie);
-
-
 
         JButton photo;
 
 
-        for(int i=0; i<50; i++) {
+        for(int i=0; i<100; i++) {
             photo = new JButton("Bouton"+i);
-            photo.setPreferredSize(new Dimension(30,30));
+            photo.setPreferredSize(new Dimension(30,70));
 
             gallerie.add(photo);
         }
