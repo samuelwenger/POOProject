@@ -14,6 +14,8 @@ public abstract class ContactGestion extends JPanel {
 
     private JPanel contentPanel = new JPanel(new BorderLayout());
 
+    private OwnPanel up = new OwnPanel(new BorderLayout());
+
 
     // Panel de titre
     private JPanel titlePanel = new JPanel(new BorderLayout());
@@ -24,12 +26,11 @@ public abstract class ContactGestion extends JPanel {
 
 
     // Panel pour l'image du contact
-    private ImageIcon contactImage = new ImageIcon("img/contact.png");
+    private ImageIcon contactImage = new ImageIcon("img/Background.jpg");
     private JButton imageButton = new JButton("edit photo");
 
-    private JLayeredPane imageLayered = new JLayeredPane();
     private OwnPanel imagePanel = new OwnPanel(contactImage.getImage());
-    private JPanel imageButtonPanel = new JPanel();
+    private OwnPanel imageButtonPanel = new OwnPanel(new BorderLayout());
 
 
     // Panel pour le formulaire
@@ -49,6 +50,7 @@ public abstract class ContactGestion extends JPanel {
 
     public ContactGestion(String nomapplication){
 
+
         // Panel titre
         labelTitleApp.setText(nomapplication);
         labelTitleApp.setHorizontalAlignment(JLabel.CENTER);
@@ -59,12 +61,15 @@ public abstract class ContactGestion extends JPanel {
 
 
         // Panel image
-        imageButtonPanel.add(imageButton);
-        imageButtonPanel.setBounds(300,300,100,100);
+        imageButtonPanel.add(imageButton, BorderLayout.EAST);
 
-        imageLayered.setSize(new Dimension(349,350));
-        imageLayered.add(imagePanel,2);
-        imageLayered.add(imageButtonPanel, 1);
+        imagePanel.setSize(400,200);
+        imagePanel.add(imageButtonPanel, BorderLayout.SOUTH);
+
+        // Panel haut
+        up.setPreferredSize(new Dimension(400,325));
+        up.add(titlePanel, BorderLayout.NORTH);
+        up.add(imagePanel, BorderLayout.CENTER);
 
 
         // Panel du formulaire
@@ -80,9 +85,8 @@ public abstract class ContactGestion extends JPanel {
 
         // Panel principal
         contentPanel.setPreferredSize(new Dimension(400,700));
-        contentPanel.add(titlePanel,BorderLayout.NORTH);
-        contentPanel.add(imageLayered, BorderLayout.CENTER);
-        contentPanel.add(formPanel, BorderLayout.SOUTH);
+        contentPanel.add(up,BorderLayout.NORTH);
+        contentPanel.add(formPanel, BorderLayout.CENTER);
 
         add(contentPanel);
 
