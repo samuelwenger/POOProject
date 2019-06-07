@@ -40,7 +40,8 @@ public class ContactApp extends JPanel {
     // Liste contacts
     private JPanel contactsPanel = new JPanel(new BorderLayout());
 
-    private JPanel contactsList = new JPanel();
+    private JPanel contactsList = new JPanel(new GridBagLayout());
+    private GridBagConstraints gc = new GridBagConstraints();
     private JScrollPane contactsScrollPane = new JScrollPane();
 
 
@@ -94,11 +95,32 @@ public class ContactApp extends JPanel {
 
         JButton contact;
 
-        for(int i=0; i<contactsTries.size();i++){
+        gc.gridwidth=1;
+        gc.gridheight=1;
+
+        gc.anchor = GridBagConstraints.NORTH;
+        gc.gridy = 0;
+        gc.gridx = 0;
+        gc.weightx = 1;
+        gc.weighty = 0;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+
+        gc.insets = new Insets(5,5,5,5);
+
+        int nbcontacts = contactsTries.size();
+
+        for(int i=0; i<nbcontacts; i++) {
+
+            gc.gridy=i;
+
+            if(i == nbcontacts-1){
+                gc.weighty = 1;
+            }
+
             contact = new JButton(contactsTries.get(i).getFirstname() + " " + contactsTries.get(i).getName());
             contact.setPreferredSize(new Dimension(380,80));
 
-            contactsList.add(contact);
+            contactsList.add(contact, gc);
             contact.addActionListener(new ShowContact(contactsTries.get(i)));
         }
     }
