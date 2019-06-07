@@ -30,7 +30,8 @@ public class GalleryApp extends JPanel {
 
     // Panel photos
     private JPanel panelPhoto = new JPanel(new BorderLayout());
-    private JPanel gallerie = new JPanel(new GridLayout(0,3));
+    private GridBagConstraints gc = new GridBagConstraints();
+    private JPanel gallerie = new JPanel(new GridBagLayout());
 
     private JScrollPane galleriePane = new JScrollPane();
 
@@ -47,8 +48,6 @@ public class GalleryApp extends JPanel {
         title.setHorizontalAlignment(JLabel.CENTER);
         titlePanel.add(back,BorderLayout.WEST);
         titlePanel.add(title, BorderLayout.CENTER);
-
-        titlePanel.setBackground(Color.RED);
 
         galleriePane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panelPhoto.add(galleriePane, BorderLayout.CENTER);
@@ -67,21 +66,52 @@ public class GalleryApp extends JPanel {
 
     public void affichePhotos(){
 
-        gallerie.setSize(new Dimension(380,700));
+        gallerie.setSize(new Dimension(380,100));
 
         galleriePane.setViewportView(gallerie);
 
         JButton photo;
 
+        gc.gridwidth=1;
+        gc.gridheight=1;
 
-        for(int i=0; i<100; i++) {
-            photo = new JButton("Bouton"+i);
-            photo.setPreferredSize(new Dimension(30,70));
+        gc.anchor = GridBagConstraints.NORTH;
+        gc.gridy = 0;
+        gc.weightx = 1;
+        gc.weighty = 0;
+        gc.fill = GridBagConstraints.HORIZONTAL;
 
-            gallerie.add(photo);
+        gc.insets = new Insets(5,5,5,5);
+
+        int nbbuttons = 11;
+        int nblignes = nbbuttons/3;
+
+        if (nbbuttons%3 != 0) {
+            ++nblignes;
         }
 
+        for(int i=0; i<nblignes;i++) {
 
+            gc.gridy=i;
+
+            if(i == nblignes-1){
+               gc.weighty = 1;
+            }
+
+            for (int j = 0; j < 3 && nbbuttons>0; j++) {
+                photo = new JButton();
+                photo.setPreferredSize(new Dimension(0, 100));
+
+                gc.gridx = j;
+                gallerie.add(photo, gc);
+
+                System.out.println(j + " " + i + "    " + gc.weighty);
+
+                --nbbuttons;
+
+            }
+
+        }
 
     }
 
