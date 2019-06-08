@@ -270,6 +270,8 @@ public class ContactApp extends JPanel {
          */
         public void deleteContact(Contact contact){
             contacts.remove(contact);
+
+            serializeObject();
             updateContacts();
         }
 

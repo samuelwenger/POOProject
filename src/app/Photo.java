@@ -36,7 +36,7 @@ public class Photo implements Serializable {
         hauteur = image.getHeight();
         largeur = image.getWidth();
 
-        image100100 = resizeImage(100,100);
+        image100100 = cropImage(110,110);
         image400 = resizeImage(400,600);
     }
 
@@ -49,6 +49,28 @@ public class Photo implements Serializable {
         newHauteur = hauteur * ratio;
         resizedImage = image.getScaledInstance((int) newLargeur, (int) newHauteur, Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImage);
+
+    }
+
+    public ImageIcon cropImage (double largeurDesiree, double hauteurDesiree){
+
+        BufferedImage scaledImage;
+
+        Image cropedImage;
+        double ratio = Math.min((2*largeurDesiree)/largeur,(2*hauteurDesiree)/hauteur);
+        double scaledWidth = largeur*ratio;
+        double scaledHeight = hauteur*ratio;
+
+        scaledImage = new BufferedImage((int) scaledWidth,(int)scaledHeight, Image.SCALE_SMOOTH);
+        Graphics2D g2d = scaledImage.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g2d.drawImage(image,0,0,(int) scaledWidth, (int) scaledHeight, null);
+        g2d.dispose();
+
+        cropedImage = scaledImage.getSubimage((int) (scaledWidth-hauteurDesiree)/2,(int) (scaledHeight-hauteurDesiree)/2, (int) largeurDesiree, (int) hauteurDesiree);
+
+        return new ImageIcon(cropedImage);
+
 
     }
 

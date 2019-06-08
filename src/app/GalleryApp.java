@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class GalleryApp extends JPanel {
 
     private MainFrame mainFrame;
+    private ViewPhoto viewPhoto;
 
     ArrayList<Photo> photos = new ArrayList<Photo>();
 
@@ -114,7 +115,7 @@ public class GalleryApp extends JPanel {
                 image = photos.get(cpt).getImage100100();
                 photo = new JButton();
                 photo.setIcon(image);
-                photo.setPreferredSize(new Dimension(110, 100));
+                photo.setPreferredSize(new Dimension(110, 110));
                 photo.addActionListener(new ShowImage(photos.get(cpt)));
 
                 gc.gridx = j;
@@ -123,9 +124,7 @@ public class GalleryApp extends JPanel {
                 --nbbuttons;
                 ++cpt;
             }
-
         }
-
     }
 
     public void serializeObject()
@@ -182,9 +181,12 @@ public class GalleryApp extends JPanel {
         Photo photo = new Photo(id,nom,file);
         photos.add(photo);
 
-        serializeObject();
         updateGalerie();
+        serializeObject();
+
     }
+
+
 
 
     public int getNextId(){
@@ -203,6 +205,7 @@ public class GalleryApp extends JPanel {
         // Titre
         private JPanel up = new JPanel(new BorderLayout());
         private JButton back = new JButton("Back");
+        private JButton delete = new JButton("Delete");
 
 
         // Changement d'image
@@ -217,7 +220,9 @@ public class GalleryApp extends JPanel {
             imagePanel.setPreferredSize(new Dimension(400,500));
 
             back.addActionListener(new BackToGallery());
+            delete.addActionListener(new DeleteImage(photo));
             up.add(back,BorderLayout.WEST);
+            up.add(delete,BorderLayout.EAST);
 
             next.addActionListener(new MoveToNext(photo));
             previous.addActionListener(new MoveToPrevious(photo));
@@ -229,6 +234,13 @@ public class GalleryApp extends JPanel {
             contentPanel.add(buttons,BorderLayout.SOUTH);
 
             add(contentPanel);
+        }
+
+        public void deleteImage(Photo photo){
+            photos.remove(photo);
+
+            serializeObject();
+            updateGalerie();
         }
     }
 
@@ -254,10 +266,24 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    public class DeleteImage implements ActionListener{
+
+        private Photo photo;
+
+        public DeleteImage (Photo photo) {
+               this.photo = photo;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            viewPhoto.deleteImage(photo);
+            galleryCardLayout.show(galleryContentPanel,"Start");
+        }
+    }
+
     public class ShowImage implements ActionListener {
 
         private Photo photo;
-        private ViewPhoto viewPhoto;
 
         public ShowImage(Photo photo){
             this.photo = photo;
