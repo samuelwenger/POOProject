@@ -81,6 +81,8 @@ public class ContactApp extends JPanel {
         // Ajouter le panel de l'application au JPanel principal
         add(contactContentPanel);
 
+        System.out.println("Salut");
+
     }
 
 
