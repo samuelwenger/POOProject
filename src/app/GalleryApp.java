@@ -180,8 +180,8 @@ public class GalleryApp extends JPanel {
             back.addActionListener(new BackToGallery());
             up.add(back,BorderLayout.WEST);
 
-            next.addActionListener(new MoveToNext(photo.getId()));
-            previous.addActionListener(new MoveToPrevious(photo.getId()));
+            next.addActionListener(new MoveToNext(photo));
+            previous.addActionListener(new MoveToPrevious(photo));
             buttons.add(next,BorderLayout.EAST);
             buttons.add(previous,BorderLayout.WEST);
 
@@ -243,16 +243,24 @@ public class GalleryApp extends JPanel {
 
     public class MoveToNext implements ActionListener {
 
-        private int nextId;
+        private int actualpostion;
+        private int newposition;
         private ViewPhoto viewPhoto;
 
-        public MoveToNext(int id){
-            nextId = id+1;
+        public MoveToNext(Photo photo){
+            actualpostion= photos.indexOf(photo);
+            newposition= actualpostion+1;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            viewPhoto = new ViewPhoto(photos.get(nextId));
+            if(newposition<photos.size()) {
+                viewPhoto = new ViewPhoto(photos.get(newposition));
+
+            }
+            else{
+                viewPhoto = new ViewPhoto(photos.get(0));
+            }
             galleryContentPanel.add(viewPhoto, "Next");
             galleryCardLayout.show(galleryContentPanel, "Next");
         }
@@ -260,18 +268,28 @@ public class GalleryApp extends JPanel {
 
     public class MoveToPrevious implements ActionListener {
 
-        private int nextId;
+        private int actualposition;
+        private int newposition;
         private ViewPhoto viewPhoto;
 
-        public MoveToPrevious(int id){
-            nextId = id-1;
-        }
+        public MoveToPrevious(Photo photo){
+            actualposition= photos.indexOf(photo);
+            newposition=actualposition-1;
+    }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            viewPhoto = new ViewPhoto(photos.get(nextId));
+            if(newposition>=0) {
+                viewPhoto = new ViewPhoto(photos.get(newposition));
+
+            }
+            else{
+                viewPhoto= new ViewPhoto(photos.get(photos.size()-1));
+            }
+
             galleryContentPanel.add(viewPhoto, "Previous");
             galleryCardLayout.show(galleryContentPanel, "Previous");
+
         }
     }
 

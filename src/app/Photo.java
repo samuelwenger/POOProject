@@ -68,4 +68,5 @@ public class Photo implements Serializable {
     public int getId() {
         return id;
     }
+
 }
