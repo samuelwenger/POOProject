@@ -123,6 +123,7 @@ public class ContactApp extends JPanel {
             contactsList.add(contact, gc);
             contact.addActionListener(new ShowContact(contactsTries.get(i)));
         }
+
     }
 
 
