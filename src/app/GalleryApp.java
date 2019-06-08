@@ -64,7 +64,7 @@ public class GalleryApp extends JPanel {
 
         add(galleryContentPanel);
 
-
+        System.out.println("Prayforgod");
 
     }
 
