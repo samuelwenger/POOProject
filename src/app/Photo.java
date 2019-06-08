@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Photo implements Serializable {
 
     private int id;
-    private BufferedImage image;
+    private transient BufferedImage image;
     private String name;
     private String path;
     private double hauteur;

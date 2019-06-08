@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
 public class GalleryApp extends JPanel {
@@ -37,6 +37,9 @@ public class GalleryApp extends JPanel {
 
     public GalleryApp(MainFrame mainFrame) {
 
+        deserializeObject();
+        updateGalerie();
+
         this.mainFrame = mainFrame;
 
         back.addActionListener(new Back());
@@ -60,7 +63,7 @@ public class GalleryApp extends JPanel {
 
         add(galleryContentPanel);
 
-        updateGalerie();
+
 
     }
 
@@ -125,6 +128,41 @@ public class GalleryApp extends JPanel {
 
     }
 
+    public void serializeObject()
+    {
+        try
+        {
+            FileOutputStream fichier = new FileOutputStream("serials/photos.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(fichier);
+            oos.writeObject(photos);
+            oos.flush();
+            oos.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void deserializeObject() {
+
+        try
+        {
+            FileInputStream fichier = new FileInputStream("serials/photos.ser");
+            ObjectInputStream ois = new ObjectInputStream(fichier);
+            photos = (ArrayList<Photo>) ois.readObject();
+            ois.close();
+        }
+        catch (IOException e)
+        {
+            photos = new ArrayList<Photo>();
+        }
+        catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
     public void updateGalerie(){
 
@@ -144,6 +182,7 @@ public class GalleryApp extends JPanel {
         Photo photo = new Photo(id,nom,file);
         photos.add(photo);
 
+        serializeObject();
         updateGalerie();
     }
 
