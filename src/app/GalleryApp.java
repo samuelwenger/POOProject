@@ -64,8 +64,6 @@ public class GalleryApp extends JPanel {
 
         add(galleryContentPanel);
 
-        System.out.println("Prayforgod");
-
     }
 
 
@@ -301,7 +299,6 @@ public class GalleryApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Test");
             galleryCardLayout.show(galleryContentPanel,"Start");
         }
     }
@@ -356,6 +353,10 @@ public class GalleryApp extends JPanel {
             galleryCardLayout.show(galleryContentPanel, "Previous");
 
         }
+    }
+
+    public ArrayList<Photo> getPhotos () {
+        return photos;
     }
 
 }

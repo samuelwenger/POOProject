@@ -18,6 +18,7 @@ public class Photo implements Serializable {
     private double largeur;
 
     private ImageIcon image100100;
+    private ImageIcon image400300;
     private ImageIcon image400;
 
 
@@ -37,6 +38,7 @@ public class Photo implements Serializable {
         largeur = image.getWidth();
 
         image100100 = cropImage(110,110);
+        image400300 = cropImage(400,300);
         image400 = resizeImage(400,600);
     }
 
@@ -81,6 +83,10 @@ public class Photo implements Serializable {
 
     public ImageIcon getImage100100(){
         return image100100;
+    }
+
+    public ImageIcon getImage400300() {
+        return image400300;
     }
 
     public ImageIcon getImage400(){

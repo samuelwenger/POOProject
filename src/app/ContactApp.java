@@ -2,6 +2,7 @@ package app;
 
 import base.ContactGestion;
 import base.OwnPanel;
+import base.GalleryPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +18,11 @@ public class ContactApp extends JPanel {
 
     private MainFrame mainFrame;
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
+    private ImageIcon defaultImage = new ImageIcon("img/Background.jpg");
+    private ImageIcon imgTemp = null;
 
     // Applications
-    private AddContact addContactApp = new AddContact();
+    private AddContact addContactApp = new AddContact(defaultImage);
     private ModifyContact modifyContact;
     private ViewContact viewContact;
 
@@ -80,8 +83,6 @@ public class ContactApp extends JPanel {
 
         // Ajouter le panel de l'application au JPanel principal
         add(contactContentPanel);
-
-        System.out.println("Salut");
 
     }
 
@@ -168,11 +169,12 @@ public class ContactApp extends JPanel {
      * Cette classe gère l'écran permettant la saisie d'un nouveau contact
      */
     public class AddContact extends ContactGestion {
-        public AddContact(){
-            super("Ajouter un contact");
-
+        public AddContact(ImageIcon image){
+            super("Ajouter un contact", image);
             getBackButton().addActionListener(new BackToContact());
             getSaveButton().addActionListener(new SaveNewContact());
+            getImageButton().addActionListener(new EditImage(null));
+
         }
 
         /**
@@ -181,15 +183,25 @@ public class ContactApp extends JPanel {
          */
         public void saveNewContact() {
             int id;
+            Contact newcontact;
 
             if(contacts.size()==0)
                 id=0;
             else
                 id=contacts.get(contacts.size()-1).getId()+1;
 
-            Contact newcontact = new Contact(id,getContactName(), getContactFirstname(), getContactTel(), getContactMail());
+
+            if(imgTemp!=null) {
+                newcontact = new Contact(id, getContactName(), getContactFirstname(), getContactTel(), getContactMail(), imgTemp);
+            }
+            else{
+                newcontact = new Contact(id, getContactName(), getContactFirstname(), getContactTel(), getContactMail());
+            }
+
             contacts.add(newcontact);
             serializeObject();
+            imgTemp=null;
+
         }
 
     }
@@ -216,13 +228,16 @@ public class ContactApp extends JPanel {
         private OwnPanel buttonsright = new OwnPanel(new FlowLayout());
         private OwnPanel buttons = new OwnPanel(new BorderLayout());
 
-        private ImageIcon image = new ImageIcon("img/Background.jpg");
-        private OwnPanel panelImage = new OwnPanel(image.getImage());
+        private ImageIcon contactImage;
+        private OwnPanel panelImage;
 
         private JPanel up = new JPanel();
 
 
         public ViewContact(Contact contact) {
+
+            contactImage = getContactImage(contact);
+            panelImage = new OwnPanel(contactImage.getImage());
 
             // Affichage
             contentPanel.setPreferredSize(new Dimension(400,700));
@@ -284,11 +299,12 @@ public class ContactApp extends JPanel {
      */
     public class ModifyContact extends ContactGestion{
 
-        public ModifyContact(Contact contact){
-            super("Editer un contact");
+        public ModifyContact(Contact contact, ImageIcon image){
+            super("Editer un contact", image);
 
             getBackButton().addActionListener(new BackToViewContact());
             getSaveButton().addActionListener(new SaveModifiedContact(contact));
+            getImageButton().addActionListener(new EditImage(contact));
 
             getFieldName().setText(contact.getName());
             getFieldFirstname().setText(contact.getFirstname());
@@ -309,10 +325,53 @@ public class ContactApp extends JPanel {
             contact.setFirstname(getFieldFirstname().getText());
             contact.setTel(getFieldTel().getText());
             contact.setMail(getFieldMail().getText());
+
+            if(imgTemp != null){
+                if(imgTemp == defaultImage){
+                    contact.setImage(null);
+                }
+                contact.setImage(imgTemp);
+            }
+
             updateContacts();
             serializeObject();
+            imgTemp=null;
         }
 
+
+    }
+
+    public ImageIcon getContactImage(Contact contact){
+        if(contact.getImage()!=null)
+            return contact.getImage();
+        else
+            return defaultImage;
+    }
+
+
+    public class ChooseImage extends GalleryPanel{
+
+        private JButton removeImage = new JButton("Supprimer l'image");
+
+        public ChooseImage(ArrayList<Photo> photos, Contact contact){
+            super(photos,"Choisir une image",contact);
+            getBack().addActionListener(new BackToViewContact());
+            removeImage.addActionListener(new SelectPhoto(defaultImage,contact));
+            getContent().add(removeImage,BorderLayout.SOUTH);
+        }
+
+        @Override
+        public JButton createBoutonPhoto(int cpt) {
+            JButton photo = super.createBoutonPhoto(cpt);
+            photo.addActionListener(new SelectPhoto(super.getPhotos().get(cpt).getImage400300(), super.getContact()));
+            return photo;
+        }
+    }
+
+
+    public void saveContactImage(Contact contact, ImageIcon image) {
+
+    //    contact.setImage(image);
     }
 
 
@@ -405,6 +464,8 @@ public class ContactApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            addContactApp = new AddContact(defaultImage);
+            contactContentPanel.add(addContactApp,"Add");
             contactCardLayout.show(contactContentPanel,"Add");
         }
     }
@@ -447,12 +508,56 @@ public class ContactApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            modifyContact= new ModifyContact(contact);
+            modifyContact = new ModifyContact(contact, getContactImage(contact));
             contactContentPanel.add(modifyContact,"Edit");
             contactCardLayout.show(contactContentPanel,"Edit");
         }
 
     }
+
+    public class EditImage implements ActionListener{
+
+        private Contact contact;
+
+        public EditImage(Contact contact){
+            this.contact = contact;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            GalleryApp galleryApp = new GalleryApp(mainFrame);
+            ChooseImage chooseImage = new ChooseImage(galleryApp.getPhotos(), contact);
+
+
+            contactContentPanel.add(chooseImage, "Choose");
+            contactCardLayout.show(contactContentPanel,"Choose");
+        }
+    }
+
+    public class SelectPhoto implements ActionListener {
+
+        private ImageIcon image;
+        private Contact contact;
+
+        public SelectPhoto (ImageIcon image, Contact contact) {
+            this.image = image;
+            this.contact = contact;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(contact!=null) {
+                modifyContact.updateImagePanel(image);
+                contactCardLayout.show(contactContentPanel, "Edit");
+            }
+            else{
+                addContactApp.updateImagePanel(image);
+                contactCardLayout.show(contactContentPanel,"Add");
+            }
+            imgTemp = image;
+        }
+    }
+
 
     /**
      * Cette classe gère l'écouteur permettant la suppression d'un contact
@@ -488,6 +593,7 @@ public class ContactApp extends JPanel {
                 addContactApp.saveNewContact();
                 addContactApp.clearFields();
                 addContactApp.resetFieldsColor();
+
                 updateContacts();
                 contactCardLayout.show(contactContentPanel, "Start");
 
@@ -513,13 +619,13 @@ public class ContactApp extends JPanel {
             modifyContact.resetFieldsColor();
 
             if (modifyContact.checkFields() == true) {
+
                 modifyContact.updateObjectContact(contact);
                 modifyContact.clearFields();
                 modifyContact.resetFieldsColor();
 
                 viewContact = new ViewContact(contact);
                 contactContentPanel.add(viewContact, "UpdatedView");
-
                 contactCardLayout.show(contactContentPanel, "UpdatedView");
             }
         }

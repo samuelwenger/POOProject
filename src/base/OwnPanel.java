@@ -31,5 +31,10 @@ public class OwnPanel extends JPanel {
         super.paintComponent(g);
     }
 
+    public void changeImage(Image image){
+        this.image = image;
+        new OwnPanel(image);
     }
+
+}
 

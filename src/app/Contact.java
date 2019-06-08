@@ -1,5 +1,6 @@
 package app;
 
+import javax.swing.*;
 import java.io.Serializable;
 
 public class Contact implements Serializable {
@@ -9,6 +10,7 @@ public class Contact implements Serializable {
     private String firstname;
     private String tel;
     private String mail;
+    private ImageIcon image;
 
     public Contact(int id, String name, String firstname, String tel, String mail){
         this.id=id;
@@ -16,6 +18,15 @@ public class Contact implements Serializable {
         this.firstname=firstname;
         this.tel=tel;
         this.mail=mail;
+    }
+
+    public Contact(int id, String name, String firstname, String tel, String mail, ImageIcon image){
+        this.id=id;
+        this.name=name;
+        this.firstname=firstname;
+        this.tel=tel;
+        this.mail=mail;
+        this.image=image;
     }
 
 
@@ -38,6 +49,10 @@ public class Contact implements Serializable {
         return mail;
     }
 
+    public ImageIcon getImage() {
+        return image;
+    }
+
     public void setName(String name){
         this.name=name;
     }
@@ -49,5 +64,8 @@ public class Contact implements Serializable {
     }
     public void setMail(String mail){
         this.mail=mail;
+    }
+    public void setImage(ImageIcon image){
+        this.image = image;
     }
 }

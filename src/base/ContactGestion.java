@@ -1,6 +1,7 @@
 package base;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 
@@ -26,10 +27,9 @@ public abstract class ContactGestion extends JPanel {
 
 
     // Panel pour l'image du contact
-    private ImageIcon contactImage = new ImageIcon("img/Background.jpg");
     private JButton imageButton = new JButton("edit photo");
-
-    private OwnPanel imagePanel = new OwnPanel(contactImage.getImage());
+    private ImageIcon imageContact;
+    private OwnPanel imagePanel;
     private OwnPanel imageButtonPanel = new OwnPanel(new BorderLayout());
 
 
@@ -48,8 +48,10 @@ public abstract class ContactGestion extends JPanel {
 
 
 
-    public ContactGestion(String nomapplication){
+    public ContactGestion(String nomapplication, ImageIcon imageContact){
 
+        this.imageContact = new ImageIcon(imageContact.getImage());
+        imagePanel = new OwnPanel(this.imageContact.getImage());
 
         // Panel titre
         labelTitleApp.setText(nomapplication);
@@ -90,6 +92,13 @@ public abstract class ContactGestion extends JPanel {
 
         add(contentPanel);
 
+    }
+
+    public void updateImagePanel(ImageIcon imageContact) {
+        up.remove(imagePanel);
+        imagePanel = new OwnPanel(imageContact.getImage());
+        up.add(imagePanel, BorderLayout.CENTER);
+        imagePanel.add(imageButtonPanel, BorderLayout.SOUTH);
     }
 
 
@@ -215,4 +224,15 @@ public abstract class ContactGestion extends JPanel {
         return fieldMail;
     }
 
+    public JButton getImageButton() {
+        return imageButton;
+    }
+
+    public OwnPanel getImagePanel() {
+        return imagePanel;
+    }
+
+    public ImageIcon getImageContact() {
+        return imageContact;
+    }
 }
