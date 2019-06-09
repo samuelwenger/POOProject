@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e850b1d8-37f1-4076-90fe-082e74bb6a56" name="Default Changelist" comment="Lien entre contacts et images terminé&#10;&#10;08.06.2019">
+    <list default="true" id="e850b1d8-37f1-4076-90fe-082e74bb6a56" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/contactProfile.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serials/contactslist.ser" beforeDir="false" afterPath="$PROJECT_DIR$/serials/contactslist.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serials/photos.ser" beforeDir="false" afterPath="$PROJECT_DIR$/serials/photos.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ContactApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ContactApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/GalleryApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/GalleryApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Photo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/ContactGestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/ContactGestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Validation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/base/Validation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="459">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -370,7 +363,7 @@
       <workItem from="1559928943495" duration="8686000" />
       <workItem from="1559997713695" duration="28836000" />
       <workItem from="1560069495919" duration="9290000" />
-      <workItem from="1560083345848" duration="176000" />
+      <workItem from="1560083345848" duration="600000" />
     </task>
     <task id="LOCAL-00001" summary="Essai de commit">
       <created>1556966376177</created>
@@ -498,15 +491,21 @@
       <option name="project" value="LOCAL" />
       <updated>1560027527145</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Code avant mise en place des élémeents graphiques&#10;&#10;09.06.2019">
+      <created>1560083578289</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1560083578290</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184758000" />
+    <option name="totallyTimeSpent" value="185182000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="1" />
@@ -514,10 +513,10 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.32089552" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.32089552" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.23726977" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.23726977" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -596,7 +595,8 @@
     <MESSAGE value="Test images dans gallerie&#10;&#10;08.06.2019" />
     <MESSAGE value="Test&#10;&#10;08.06.2019" />
     <MESSAGE value="Lien entre contacts et images terminé&#10;&#10;08.06.2019" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lien entre contacts et images terminé&#10;&#10;08.06.2019" />
+    <MESSAGE value="Code avant mise en place des élémeents graphiques&#10;&#10;09.06.2019" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code avant mise en place des élémeents graphiques&#10;&#10;09.06.2019" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -780,8 +780,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/base/Validation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        <state relative-caret-position="459">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
