@@ -384,12 +384,6 @@ public class ContactApp extends JPanel {
     }
 
 
-    public void saveContactImage(Contact contact, ImageIcon image) {
-
-    //    contact.setImage(image);
-    }
-
-
     /**
      * Cette méthode permet la sérialisation de l'ArrayList contenant tous les contacts.
      */
