@@ -19,7 +19,9 @@ public class ContactApp extends JPanel {
     private MainFrame mainFrame;
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private ImageIcon defaultImage = new ImageIcon("img/Background.jpg");
+    private ImageIcon defaultImage8080 = new ImageIcon("img/contactProfile.jpg");
     private ImageIcon imgTemp = null;
+    private ImageIcon img8080Temp = null;
 
     // Applications
     private AddContact addContactApp = new AddContact(defaultImage);
@@ -121,6 +123,7 @@ public class ContactApp extends JPanel {
             }
 
             contact = new JButton(contactsTries.get(i).getFirstname() + " " + contactsTries.get(i).getName());
+            contact.setIcon(getContactImage8080(contactsTries.get(i)));
             contact.setPreferredSize(new Dimension(380,80));
 
             contactsList.add(contact, gc);
@@ -192,7 +195,7 @@ public class ContactApp extends JPanel {
 
 
             if(imgTemp!=null) {
-                newcontact = new Contact(id, getContactName(), getContactFirstname(), getContactTel(), getContactMail(), imgTemp);
+                newcontact = new Contact(id, getContactName(), getContactFirstname(), getContactTel(), getContactMail(), imgTemp, img8080Temp);
             }
             else{
                 newcontact = new Contact(id, getContactName(), getContactFirstname(), getContactTel(), getContactMail());
@@ -201,6 +204,7 @@ public class ContactApp extends JPanel {
             contacts.add(newcontact);
             serializeObject();
             imgTemp=null;
+            img8080Temp=null;
 
         }
 
@@ -329,13 +333,16 @@ public class ContactApp extends JPanel {
             if(imgTemp != null){
                 if(imgTemp == defaultImage){
                     contact.setImage(null);
+                    contact.setImage8080(null);
                 }
                 contact.setImage(imgTemp);
+                contact.setImage8080(img8080Temp);
             }
 
             updateContacts();
             serializeObject();
             imgTemp=null;
+            img8080Temp=null;
         }
 
 
@@ -348,6 +355,13 @@ public class ContactApp extends JPanel {
             return defaultImage;
     }
 
+    public ImageIcon getContactImage8080(Contact contact){
+        if(contact.getImage()!=null)
+            return contact.getImage8080();
+        else
+            return defaultImage8080;
+    }
+
 
     public class ChooseImage extends GalleryPanel{
 
@@ -355,15 +369,16 @@ public class ContactApp extends JPanel {
 
         public ChooseImage(ArrayList<Photo> photos, Contact contact){
             super(photos,"Choisir une image",contact);
-            getBack().addActionListener(new BackToViewContact());
-            removeImage.addActionListener(new SelectPhoto(defaultImage,contact));
+            getBack().addActionListener(new BackToEdit(contact));
+            removeImage.addActionListener(new SelectPhoto(defaultImage,defaultImage8080,contact));
             getContent().add(removeImage,BorderLayout.SOUTH);
         }
 
         @Override
         public JButton createBoutonPhoto(int cpt) {
             JButton photo = super.createBoutonPhoto(cpt);
-            photo.addActionListener(new SelectPhoto(super.getPhotos().get(cpt).getImage400300(), super.getContact()));
+            photo.addActionListener(new SelectPhoto(super.getPhotos().get(cpt).getImage400300(), super.getPhotos().get(cpt).getImage8080(), super.getContact()));
+
             return photo;
         }
     }
@@ -537,11 +552,13 @@ public class ContactApp extends JPanel {
     public class SelectPhoto implements ActionListener {
 
         private ImageIcon image;
+        private ImageIcon image8080;
         private Contact contact;
 
-        public SelectPhoto (ImageIcon image, Contact contact) {
+        public SelectPhoto (ImageIcon image, ImageIcon image8080, Contact contact) {
             this.image = image;
             this.contact = contact;
+            this.image8080 = image8080;
         }
 
         @Override
@@ -555,6 +572,26 @@ public class ContactApp extends JPanel {
                 contactCardLayout.show(contactContentPanel,"Add");
             }
             imgTemp = image;
+            img8080Temp = image8080;
+        }
+    }
+
+    public class BackToEdit implements ActionListener{
+
+        private Contact contact;
+
+        public BackToEdit(Contact contact){
+            this.contact = contact;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(contact!=null){
+                contactCardLayout.show(contactContentPanel,"Edit");
+            }
+            else{
+                contactCardLayout.show(contactContentPanel,"Add");
+            }
         }
     }
 

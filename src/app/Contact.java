@@ -11,6 +11,7 @@ public class Contact implements Serializable {
     private String tel;
     private String mail;
     private ImageIcon image;
+    private ImageIcon image8080;
 
     public Contact(int id, String name, String firstname, String tel, String mail){
         this.id=id;
@@ -20,13 +21,14 @@ public class Contact implements Serializable {
         this.mail=mail;
     }
 
-    public Contact(int id, String name, String firstname, String tel, String mail, ImageIcon image){
+    public Contact(int id, String name, String firstname, String tel, String mail, ImageIcon image, ImageIcon image8080){
         this.id=id;
         this.name=name;
         this.firstname=firstname;
         this.tel=tel;
         this.mail=mail;
         this.image=image;
+        this.image8080=image8080;
     }
 
 
@@ -53,6 +55,10 @@ public class Contact implements Serializable {
         return image;
     }
 
+    public ImageIcon getImage8080(){
+        return image8080;
+    }
+
     public void setName(String name){
         this.name=name;
     }
@@ -67,5 +73,8 @@ public class Contact implements Serializable {
     }
     public void setImage(ImageIcon image){
         this.image = image;
+    }
+    public void setImage8080(ImageIcon image8080) {
+        this.image8080 = image8080;
     }
 }

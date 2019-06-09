@@ -3,6 +3,7 @@ package app;
 import base.OwnPanel;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -254,7 +255,10 @@ public class GalleryApp extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFileChooser choix = new JFileChooser();
+            JFileChooser choix = new JFileChooser("img/photos");
+            choix.addChoosableFileFilter(new FileNameExtensionFilter("Images Files","jpg","png"));
+            choix.setAcceptAllFileFilterUsed(true);
+
             int retour = choix.showOpenDialog(panelPhoto);
             if (retour == JFileChooser.APPROVE_OPTION){
                 String nom = choix.getSelectedFile().getName();

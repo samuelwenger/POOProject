@@ -137,6 +137,10 @@ public abstract class ContactGestion extends JPanel {
             res = false;
         if(validation.isNotEmpty(fieldTel)==false)
             res = false;
+        if(validation.phoneIsValid(fieldTel)==false)
+            res = false;
+        if(validation.emailIsValid(fieldMail)==false)
+            res = false;
 
         return res;
     }

@@ -22,6 +22,36 @@ public class Validation {
     }
 
 
+    public boolean phoneIsValid(JTextField textField){
+        String swissPhoneRegex = "(?:(?:|0{1,2}|\\+{0,2})41(?:|\\(0\\))|0)([1-9]\\d)(\\d{3})(\\d{2})(\\d{2})";
+        String emergencyPhoneRegex = "\\d{3}";
+
+        if(textField.getText().matches(swissPhoneRegex) == false && textField.getText().matches(emergencyPhoneRegex) == false){
+            textField.setBackground(Color.red);
+            textField.setForeground(Color.WHITE);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public boolean emailIsValid(JTextField textField){
+        String emailPattern = "\\b[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
+        String voidEmail = "";
+
+        if(textField.getText().matches(emailPattern) == false && textField.getText().matches(voidEmail) == false){
+            textField.setBackground(Color.red);
+            textField.setForeground(Color.WHITE);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+
+
     /**
      * Cette méthode permet de réinitialliser l'affichage des JTextFields colorés suite à une
      * erreur de validation au moment de la sauvegarde précédente.
@@ -32,5 +62,6 @@ public class Validation {
         textField.setBackground(Color.WHITE);
         textField.setForeground(Color.BLACK);
     }
+
 
 }

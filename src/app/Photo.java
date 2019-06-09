@@ -20,6 +20,7 @@ public class Photo implements Serializable {
     private ImageIcon image100100;
     private ImageIcon image400300;
     private ImageIcon image400;
+    private ImageIcon image8080;
 
 
     public Photo(int id, String name, File file) {
@@ -39,6 +40,7 @@ public class Photo implements Serializable {
 
         image100100 = cropImage(110,110);
         image400300 = cropImage(400,300);
+        image8080 = cropImage(80,80);
         image400 = resizeImage(400,600);
     }
 
@@ -91,6 +93,10 @@ public class Photo implements Serializable {
 
     public ImageIcon getImage400(){
         return image400;
+    }
+
+    public ImageIcon getImage8080() {
+        return image8080;
     }
 
     public int getId() {
