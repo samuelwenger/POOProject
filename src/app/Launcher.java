@@ -23,19 +23,12 @@ public class Launcher extends Start {
     private JLabel wifi = new JLabel ("W");
     private JLabel reseau = new JLabel("R");
 
-    //Panels
-
-    /*
-    private JPanel screen = new JPanel(new BorderLayout());
-    private JPanel header = new JPanel(new GridLayout(1,2));
-    private JPanel footer = new JPanel(new GridLayout(1,4,10,0));
-    private JPanel main = new JPanel(new GridLayout(4,1));
-    */
 
     //SousPanels
     private OwnPanel leftheader = new OwnPanel(new FlowLayout(FlowLayout.LEFT));
     private OwnPanel rightheader = new OwnPanel(new FlowLayout(FlowLayout.RIGHT));
     private OwnPanel controlButtons = new OwnPanel(new FlowLayout());
+
 
     //Buttons
     private OwnButton lock = new OwnButton(new ImageIcon("img/icons/unlock.png"),70,70);

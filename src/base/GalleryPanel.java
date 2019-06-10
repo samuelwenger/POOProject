@@ -4,7 +4,6 @@ import app.Contact;
 import app.Photo;
 
 import javax.swing.*;
-import javax.swing.text.Position;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -42,10 +41,12 @@ public class GalleryPanel extends JPanel {
 
     public void init() {
 
-        setBackground(Color.WHITE);
-        up.setBackground(Color.WHITE);
-        panelPhoto.setBackground(Color.WHITE);
-        gallery.setBackground(Color.WHITE);
+        Color color = new Color(255,239, 210);
+
+        setBackground(color);
+        up.setBackground(color);
+        panelPhoto.setBackground(color);
+        gallery.setBackground(color);
 
         content.setPreferredSize(new Dimension(400,700));
 

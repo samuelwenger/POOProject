@@ -36,7 +36,7 @@ public class HeureApp extends JPanel{
 
         heure.setHorizontalAlignment(JLabel.CENTER);
         heure.setVerticalAlignment(JLabel.BOTTOM);
-        heure.setFont(new Font("Bahnschrift", Font.PLAIN,125));
+        heure.setFont(new Font("Bahnschrift", Font.PLAIN,80));
         heure.setForeground(Color.BLACK);
 
         back.addActionListener(new Back());

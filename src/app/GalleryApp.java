@@ -85,6 +85,10 @@ public class GalleryApp extends JPanel {
 
         public ViewPhoto(Photo photo) {
 
+            setBackground(Color.BLACK);
+            //.setBackground(Color.BLACK);
+            buttons.setBackground(Color.BLACK);
+
             imagePanel = new OwnPanel(photo.getImage400().getImage());
             imagePanel.setPreferredSize(new Dimension(400,500));
 

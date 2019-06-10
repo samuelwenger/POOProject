@@ -52,9 +52,11 @@ public abstract class ContactGestion extends JPanel {
 
     public ContactGestion(String nomapplication, ImageIcon imageContact){
 
-        setBackground(Color.WHITE);
-        titlePanel.setBackground(Color.WHITE);
-        formPanel.setBackground(Color.WHITE);
+        Color color = new Color(225,229,255);
+
+        setBackground(color);
+        formPanel.setBackground(color);
+        titlePanel.setBackground(color);
 
         this.imageContact = new ImageIcon(imageContact.getImage());
         imagePanel = new OwnPanel(this.imageContact.getImage());

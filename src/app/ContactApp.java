@@ -53,11 +53,12 @@ public class ContactApp extends JPanel {
 
     public ContactApp(MainFrame mainFrame) {
 
-        titrePanel.setBackground(Color.WHITE);
-        contactsScrollPane.setBackground(Color.WHITE);
-        contactsList.setBackground(Color.WHITE);
-        contactsPanel.setBackground(Color.WHITE);
+        Color color = new Color(225,229,255);
 
+        titrePanel.setBackground(color);
+        contactsScrollPane.setBackground(color);
+        contactsList.setBackground(color);
+        contactsPanel.setBackground(color);
 
 
         this.mainFrame = mainFrame;
