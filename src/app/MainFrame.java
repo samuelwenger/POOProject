@@ -15,6 +15,7 @@ public class MainFrame extends JFrame {
     private ContactApp contactApp = new ContactApp(this);
     private GalleryApp galleryApp = new GalleryApp(this);
     private LockPanel  panelverouille = new LockPanel(this);
+    private HeureApp heureApp = new HeureApp(this);
 
 
     public MainFrame(){
@@ -28,6 +29,7 @@ public class MainFrame extends JFrame {
         contentPanel.add(launcher,"app.Launcher");
         contentPanel.add(contactApp, "app.ContactApp");
         contentPanel.add(galleryApp, "app.GalleryApp");
+        contentPanel.add(heureApp,"app.HeureApp" );
         contentPanel.add(panelverouille,"lock");
 
 

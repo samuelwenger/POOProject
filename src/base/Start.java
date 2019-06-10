@@ -13,7 +13,6 @@ public class Start extends JPanel {
 
     private OwnPanel contentPanel = new OwnPanel (new ImageIcon("img/phoneBackground.png").getImage());
 
-
     private OwnPanel buttonpanel = new OwnPanel(new FlowLayout());
     private OwnPanel header = new OwnPanel(new GridLayout(1,2));
     private OwnPanel main = new OwnPanel (new GridLayout(5,1));

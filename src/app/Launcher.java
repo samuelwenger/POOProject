@@ -42,6 +42,7 @@ public class Launcher extends Start {
 
     private OwnButton contact = new OwnButton(new ImageIcon("img/icons/contacts.png"),100,100);
     private OwnButton galerie = new OwnButton(new ImageIcon("img/icons/gallery.png"),100,100);
+    private OwnButton heureapp = new OwnButton(new ImageIcon("img/icons/gallery.png"),100,100);
 
 
 
@@ -71,9 +72,11 @@ public class Launcher extends Start {
 
         getButtonpanel().add(contact);
         getButtonpanel().add(galerie);
+        getButtonpanel().add(heureapp);
 
         contact.addActionListener(new ClicContactApp());
         galerie.addActionListener(new ClicGalleryApp());
+        heureapp.addActionListener(new ClicHeureApp());
 
        /*
         header.setOpaque(false);
@@ -101,6 +104,14 @@ public class Launcher extends Start {
             mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"app.GalleryApp");
         }
 
+    }
+
+    public class ClicHeureApp implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"app.HeureApp");
+        }
     }
 
     public class Lock implements ActionListener {
