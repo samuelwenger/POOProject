@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e850b1d8-37f1-4076-90fe-082e74bb6a56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serials/contactslist.ser" beforeDir="false" afterPath="$PROJECT_DIR$/serials/contactslist.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serials/photos.ser" beforeDir="false" afterPath="$PROJECT_DIR$/serials/photos.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ContactApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ContactApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/GalleryApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/GalleryApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/GalleryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/GalleryPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/OwnButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/OwnButton.java" afterDir="false" />
-    </list>
+    <list default="true" id="e850b1d8-37f1-4076-90fe-082e74bb6a56" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/ContactApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+            <state relative-caret-position="345">
+              <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4098#4673#0" />
@@ -302,7 +294,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560161300766" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560161383350" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -376,7 +368,7 @@
       <workItem from="1559997713695" duration="28836000" />
       <workItem from="1560069495919" duration="9290000" />
       <workItem from="1560083345848" duration="4964000" />
-      <workItem from="1560151935589" duration="9255000" />
+      <workItem from="1560151935589" duration="9553000" />
     </task>
     <task id="LOCAL-00001" summary="Essai de commit">
       <created>1556966376177</created>
@@ -532,11 +524,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560154692660</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Affichage des contacts&#10;Héritage dans GalleryApp pour l'affichage des images&#10;&#10;10.06.2019">
+      <created>1560161531979</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1560161531979</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198801000" />
+    <option name="totallyTimeSpent" value="199099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -634,7 +633,8 @@
     <MESSAGE value="Ajout image default pour le contact&#10;09.06.2019" />
     <MESSAGE value="Test&#10;&#10;09.06.2019" />
     <MESSAGE value="Modifications des boutons par des icônes&#10;&#10;09.06.2019" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifications des boutons par des icônes&#10;&#10;09.06.2019" />
+    <MESSAGE value="Affichage des contacts&#10;Héritage dans GalleryApp pour l'affichage des images&#10;&#10;10.06.2019" />
+    <option name="LAST_COMMIT_MESSAGE" value="Affichage des contacts&#10;Héritage dans GalleryApp pour l'affichage des images&#10;&#10;10.06.2019" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -823,8 +823,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/ContactApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="345">
+          <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4098#4673#0" />
