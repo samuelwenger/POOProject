@@ -16,8 +16,9 @@ public class HeureApp extends JPanel{
 
     private MainFrame mainFrame;
 
-    private JPanel panelHeure = new JPanel();
-    private JPanel contentPanel = new JPanel();
+    private OwnPanel panelHeure = new OwnPanel(new FlowLayout());
+    private OwnPanel panelBack = new OwnPanel(new FlowLayout());
+    private OwnPanel contentPanel = new OwnPanel(new ImageIcon("img/phoneBackground.png").getImage());
 
     private OwnButton back= new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
 
@@ -37,11 +38,15 @@ public class HeureApp extends JPanel{
         heure.setHorizontalAlignment(JLabel.CENTER);
         heure.setVerticalAlignment(JLabel.BOTTOM);
         heure.setFont(new Font("Bahnschrift", Font.PLAIN,80));
-        heure.setForeground(Color.BLACK);
+        heure.setForeground(Color.WHITE);
 
         back.addActionListener(new Back());
-        contentPanel.add(heure);
-        contentPanel.add(back);
+
+        panelHeure.add(heure);
+        panelBack.add(back);
+        contentPanel.add(panelHeure,BorderLayout.NORTH);
+        contentPanel.add(panelBack,BorderLayout.SOUTH);
+
 
         add(contentPanel);
 
