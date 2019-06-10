@@ -19,28 +19,20 @@ public class Start extends JPanel {
     private OwnPanel main = new OwnPanel (new GridLayout(5,1));
     private OwnButton off = new OwnButton(new ImageIcon("img/icons/shutdown.png"),70,70);
 
-
-    // Heure
-
-/*
-    Date datesystem = new Date();
-    DateFormat heureFormat = new SimpleDateFormat("HH:mm");
-    String formattedtime = heureFormat.format(datesystem);
-    private JLabel heure = new JLabel(formattedtime);
-*/
-
     private JLabel heure = new JLabel();
     final private DateFormat DATEFORMAT = new SimpleDateFormat("HH:mm");
     private Timer timer = new Timer(0, new CurrentTime());
 
-
     // Date
+    Date datefordate= new Date();
     DateFormat dateFormat = new SimpleDateFormat("EEE dd MMMM");
-    String formatteddate = dateFormat.format(datesystem);
+    String formatteddate = dateFormat.format(datefordate);
     private JLabel date = new JLabel(formatteddate);
 
 
     public Start() {
+
+        timer.start();
         contentPanel.setPreferredSize(new Dimension(400,700));
 
         heure.setHorizontalAlignment(JLabel.CENTER);
@@ -54,8 +46,6 @@ public class Start extends JPanel {
         date.setForeground(Color.WHITE);
 
         off.addActionListener(new SwitchOff());
-
-        timer.start();
 
         main.add(heure);
         main.add(date);
@@ -84,7 +74,7 @@ public class Start extends JPanel {
     }
 
     public String getFormattedtime(){
-        return formattedtime;
+        return heure.getText();
     }
 
     public String getFormatteddate() {
@@ -105,6 +95,7 @@ public class Start extends JPanel {
         public void actionPerformed(ActionEvent e) {
             Calendar now = Calendar.getInstance();
             heure.setText(DATEFORMAT.format(now.getTime()));
+            repaint();
         }
     }
 

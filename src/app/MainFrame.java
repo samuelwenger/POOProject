@@ -36,6 +36,9 @@ public class MainFrame extends JFrame {
 
         // Ajouter le conteneur principal à la fenêtre
         add(contentPanel);
+        setLocationRelativeTo(null);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         pack();
 
     }
