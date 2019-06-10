@@ -16,8 +16,9 @@ public class GalleryPanel extends JPanel {
     private Contact contact;
 
     private JPanel up = new JPanel(new BorderLayout());
-    private JButton back = new JButton("<");
     private JLabel title = new JLabel();
+    private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
+
 
     private JPanel panelPhoto = new JPanel(new BorderLayout());
     private JScrollPane galleryPane = new JScrollPane();

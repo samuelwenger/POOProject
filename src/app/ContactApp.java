@@ -1,6 +1,7 @@
 package app;
 
 import base.ContactGestion;
+import base.OwnButton;
 import base.OwnPanel;
 import base.GalleryPanel;
 
@@ -38,9 +39,9 @@ public class ContactApp extends JPanel {
     // Titre
     private JPanel titrePanel = new JPanel(new BorderLayout());
 
-    private JButton back = new JButton("Quitter");
     private JLabel titreApp = new JLabel("Contacts");
-    private JButton addContact = new JButton("+");
+    private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
+    private OwnButton addContact = new OwnButton(new ImageIcon("img/icons/add.png"),40,40);
 
     // Liste contacts
     private JPanel contactsPanel = new JPanel(new BorderLayout());
@@ -226,9 +227,9 @@ public class ContactApp extends JPanel {
         private JPanel infos = new JPanel(new GridLayout(3,1));
 
         // Titre + image
-        private JButton back = new JButton("<");
-        private JButton edit = new JButton("E");
-        private JButton delete= new JButton("Delete");
+        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
+        private OwnButton edit = new OwnButton(new ImageIcon("img/icons/edit.png"),40,40);
+        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
         private OwnPanel buttonsright = new OwnPanel(new FlowLayout());
         private OwnPanel buttons = new OwnPanel(new BorderLayout());
 

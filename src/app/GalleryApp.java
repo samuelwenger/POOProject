@@ -1,5 +1,6 @@
 package app;
 
+import base.OwnButton;
 import base.OwnPanel;
 
 import javax.swing.*;
@@ -203,14 +204,14 @@ public class GalleryApp extends JPanel {
 
         // Titre
         private JPanel up = new JPanel(new BorderLayout());
-        private JButton back = new JButton("Back");
-        private JButton delete = new JButton("Delete");
+        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
+        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
 
 
         // Changement d'image
         private JPanel buttons = new JPanel(new BorderLayout());
-        private JButton next = new JButton(">");
-        private JButton previous = new JButton("<");
+        private OwnButton next = new OwnButton(new ImageIcon("img/icons/right.png"),40,40);
+        private OwnButton previous = new OwnButton(new ImageIcon("img/icons/left.png"),40,40);
 
 
         public ViewPhoto(Photo photo) {
