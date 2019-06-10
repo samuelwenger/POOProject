@@ -1,5 +1,9 @@
 package app;
 
+import base.OwnButton;
+import base.OwnPanel;
+import base.Start;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,41 +12,36 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Launcher extends JPanel {
+public class Launcher extends Start {
 
     private MainFrame mainFrame;
 
-    //formatteddate
-    Date datesystem = new Date();
-    DateFormat heureFormat = new SimpleDateFormat("HH:mm");
-    String formattedtime = heureFormat.format(datesystem);
-
-        //date
-    DateFormat dateFormat = new SimpleDateFormat("EEE dd MMMM");
-    String formatteddate = dateFormat.format(datesystem);
-
 
     //header
-    private JLabel heure = new JLabel(formattedtime);
+    private JLabel heure = new JLabel(getFormattedtime());
     private JLabel batterie = new JLabel("B");
     private JLabel wifi = new JLabel ("W");
     private JLabel reseau = new JLabel("R");
+
     //Panels
+
+    /*
     private JPanel screen = new JPanel(new BorderLayout());
     private JPanel header = new JPanel(new GridLayout(1,2));
     private JPanel footer = new JPanel(new GridLayout(1,4,10,0));
     private JPanel main = new JPanel(new GridLayout(4,1));
-    //SousPanels
-    private JPanel leftheader = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    private JPanel rightheader = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-    private JLabel heureMain = new JLabel(formattedtime);
-    private JLabel dateMain = new JLabel(formatteddate);
+    */
 
+    //SousPanels
+    private OwnPanel leftheader = new OwnPanel(new FlowLayout(FlowLayout.LEFT));
+    private OwnPanel rightheader = new OwnPanel(new FlowLayout(FlowLayout.RIGHT));
+    private OwnPanel controlButtons = new OwnPanel(new FlowLayout());
 
     //Buttons
-    private JButton contact = new JButton();
-    private JButton galerie = new JButton();
-    private JButton appel = new JButton ();
+    private OwnButton lock = new OwnButton(new ImageIcon("img/icons/unlock.png"),70,70);
+
+    private OwnButton contact = new OwnButton(new ImageIcon("img/icons/contacts.png"),100,100);
+    private OwnButton galerie = new OwnButton(new ImageIcon("img/icons/gallery.png"),100,100);
 
 
 
@@ -51,54 +50,38 @@ public class Launcher extends JPanel {
         this.mainFrame = mainFrame;
 
         //ajout de la barre supérieur
+        heure.setForeground(Color.WHITE);
+        batterie.setForeground(Color.WHITE);
+        wifi.setForeground(Color.WHITE);
+        reseau.setForeground(Color.WHITE);
 
         leftheader.add(heure);
         rightheader.add(batterie);
         rightheader.add(wifi);
         rightheader.add(reseau);
 
-        header.add(leftheader);
-        header.add(rightheader);
+        getHeader().add(leftheader);
+        getHeader().add(rightheader);
 
-        //ajout du main
-        heureMain.setHorizontalAlignment(JLabel.CENTER);
-        heureMain.setVerticalAlignment(JLabel.BOTTOM);
-        heureMain.setFont(new Font("Bahnschrift", Font.PLAIN,75));
+        lock.addActionListener(new Lock());
+        controlButtons.add(lock);
+        controlButtons.add(getOff());
 
-        dateMain.setHorizontalAlignment(JLabel.CENTER);
-        dateMain.setVerticalAlignment(JLabel.TOP);
-        dateMain.setFont(new Font("Bahnschrift", Font.PLAIN,20));
+        getMain().add(controlButtons);
 
-        main.add(heureMain);
-        main.add(dateMain);
-
-        //ajout du footer
-        footer.setPreferredSize(new Dimension(400,100));
-        contact.setIcon(new ImageIcon("C:\\Users\\rgall\\IdeaProjects\\POO-Projet-RGSW\\img\\contact.png"));
-        footer.add(contact);
-        footer.add(galerie);
-        footer.add(appel);
+        getButtonpanel().add(contact);
+        getButtonpanel().add(galerie);
 
         contact.addActionListener(new ClicContactApp());
         galerie.addActionListener(new ClicGalleryApp());
 
-
-        screen.add(header, BorderLayout.NORTH);
-        screen.add(footer, BorderLayout.SOUTH);
-        screen.add(main, BorderLayout.CENTER);
-
-
+       /*
         header.setOpaque(false);
         main.setOpaque(false);
         footer.setOpaque(false);
         leftheader.setOpaque(false);
         rightheader.setOpaque(false);
-
-        screen.setPreferredSize(new Dimension(400,700));
-        screen.setOpaque(true);
-        screen.setBackground(Color.CYAN);
-
-        add(screen);
+        */
 
     }
 
@@ -118,6 +101,14 @@ public class Launcher extends JPanel {
             mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"app.GalleryApp");
         }
 
+    }
+
+    public class Lock implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"lock");
+        }
     }
 
 

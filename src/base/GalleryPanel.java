@@ -42,6 +42,11 @@ public class GalleryPanel extends JPanel {
 
     public void init() {
 
+        setBackground(Color.WHITE);
+        up.setBackground(Color.WHITE);
+        panelPhoto.setBackground(Color.WHITE);
+        gallery.setBackground(Color.WHITE);
+
         content.setPreferredSize(new Dimension(400,700));
 
         title.setHorizontalAlignment(JLabel.CENTER);
