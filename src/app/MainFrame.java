@@ -14,6 +14,7 @@ public class MainFrame extends JFrame {
     private Launcher launcher = new Launcher(this);
     private ContactApp contactApp = new ContactApp(this);
     private GalleryApp galleryApp = new GalleryApp(this);
+    private LockPanel  panelverouille = new LockPanel(this);
 
 
     public MainFrame(){
@@ -27,10 +28,11 @@ public class MainFrame extends JFrame {
         contentPanel.add(launcher,"app.Launcher");
         contentPanel.add(contactApp, "app.ContactApp");
         contentPanel.add(galleryApp, "app.GalleryApp");
+        contentPanel.add(panelverouille,"lock");
 
 
         // Afficher le pannel app.Launcher
-        cardLayout.show(contentPanel,"app.Launcher");
+        cardLayout.show(contentPanel,"lock");
 
         // Ajouter le conteneur principal à la fenêtre
         add(contentPanel);
