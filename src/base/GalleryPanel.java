@@ -116,12 +116,23 @@ public class GalleryPanel extends JPanel {
 
     public JButton createBoutonPhoto(int cpt) {
 
-        JButton photo = new JButton();
-        photo.setIcon(photos.get(cpt).getImage100100());
+        OwnButton photo = new OwnButton(photos.get(cpt).getImage100100(),80,80);
         photo.setPreferredSize(new Dimension(110, 110));
 
         return photo;
 
+    }
+
+    public void updateGallery(ArrayList<Photo> photos){
+        this.photos = photos;
+
+        panelPhoto.removeAll();
+        panelPhoto.add(galleryPane, BorderLayout.CENTER);
+
+        gallery.removeAll();
+        galleryPane.setViewportView(gallery);
+
+        affichePhotos();
     }
 
     public JButton getBack() {
@@ -138,6 +149,18 @@ public class GalleryPanel extends JPanel {
 
     public JPanel getContent(){
         return content;
+    }
+
+    public JPanel getPanelPhoto() {
+        return panelPhoto;
+    }
+
+    public JPanel getGallery () {
+        return gallery;
+    }
+
+    public JPanel getUp () {
+        return up;
     }
 
 }

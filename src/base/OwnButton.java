@@ -68,6 +68,8 @@ public class OwnButton extends JButton {
         setFocusable(false);
         setBackground(new Color(0,0,0,0));
         setPreferredSize(new Dimension(width, height));
+        setContentAreaFilled(true);
+        setRolloverEnabled(false);
 
 
         setHorizontalAlignment(SwingConstants.LEFT);

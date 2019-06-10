@@ -1,5 +1,6 @@
 package app;
 
+import base.GalleryPanel;
 import base.OwnButton;
 import base.OwnPanel;
 
@@ -18,114 +19,100 @@ public class GalleryApp extends JPanel {
 
     ArrayList<Photo> photos = new ArrayList<Photo>();
 
+    private GalleryStart galleryStart;
+
     // CardLayout pour l'application
     private CardLayout galleryCardLayout = new CardLayout();
     private JPanel galleryContentPanel = new JPanel(galleryCardLayout);
 
-    // Elements de l'application Gallery
-    private JPanel galleryStartPanel = new JPanel(new BorderLayout());
-
-    // Panel titre
-    private JPanel titlePanel = new JPanel(new BorderLayout());
-    private JButton back = new JButton("<");
-    private JLabel title = new JLabel("Galerie");
-    private JButton add = new JButton("+");
-
-    // Panel photos
-    private JPanel panelPhoto = new JPanel(new BorderLayout());
-    private GridBagConstraints gc = new GridBagConstraints();
-    private JPanel galerie = new JPanel(new GridBagLayout());
-    private JScrollPane galleriePane = new JScrollPane();
-
 
     public GalleryApp(MainFrame mainFrame) {
 
-        deserializeObject();
-        updateGalerie();
-
         this.mainFrame = mainFrame;
 
-        back.addActionListener(new Back());
-        add.addActionListener(new AddImage());
+        deserializeObject();
+      //  updateGalerie();
 
-        title.setHorizontalAlignment(JLabel.CENTER);
-        titlePanel.add(back,BorderLayout.WEST);
-        titlePanel.add(title, BorderLayout.CENTER);
-        titlePanel.add(add,BorderLayout.EAST);
+        galleryStart = new GalleryStart(photos, "Galerie");
 
-        galleriePane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        panelPhoto.add(galleriePane, BorderLayout.CENTER);
-
-        galleryStartPanel.setBackground(Color.BLUE);
-        galleryStartPanel.setPreferredSize(new Dimension(400,700));
-        galleryStartPanel.add(titlePanel, BorderLayout.NORTH);
-        galleryStartPanel.add(panelPhoto, BorderLayout.CENTER);
-
-        galleryContentPanel.add(galleryStartPanel, "Start");
-        galleryCardLayout.show(galleryContentPanel,"Start");
+        galleryContentPanel.add(galleryStart, "Start");
+        galleryCardLayout.show(galleryContentPanel, "Start");
 
         add(galleryContentPanel);
-
     }
 
 
-    public void affichePhotos(){
 
-        //galerie.setSize(new Dimension(380,100));
+    public class GalleryStart extends GalleryPanel {
 
-        JButton photo;
-        ImageIcon image;
-        String label;
-
-        // GridBagLayout
-        gc.gridwidth=1;
-        gc.gridheight=1;
-        gc.weightx = 1;
-        gc.weighty = 0;
-        gc.anchor = GridBagConstraints.NORTHWEST;
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.insets = new Insets(5,5,5,5);
-
-        // Calculs
-        int nbbuttons = photos.size();
-        int nblignes = nbbuttons/3;
-        int cpt = 0;
+        private OwnButton add = new OwnButton(new ImageIcon("img/icons/addimage.png"),40,40);
 
 
-        if (nbbuttons>=3){
-            gc.fill = GridBagConstraints.HORIZONTAL;
-        }
-        else {
-            gc.weightx = 0;
+        public GalleryStart(ArrayList<Photo> photos, String titreEcran) {
+            super(photos, titreEcran);
+
+            getBack().addActionListener(new Back());
+
+            add.addActionListener(new AddImage());
+            getUp().add(add,BorderLayout.EAST);
+
         }
 
-        if (nbbuttons%3 != 0) {
-            ++nblignes;
-        }
+        public JButton createBoutonPhoto(int cpt) {
+            JButton photo = super.createBoutonPhoto(cpt);
+            photo.addActionListener(new ShowImage(photos.get(cpt)));
 
-        for(int i=0; i<nblignes; i++) {
-
-            gc.gridy=i;
-
-            if(i == nblignes-1){
-               gc.weighty = 1;
-            }
-
-            for (int j = 0; j < 3 && nbbuttons>0; j++) {
-                image = photos.get(cpt).getImage100100();
-                photo = new JButton();
-                photo.setIcon(image);
-                photo.setPreferredSize(new Dimension(110, 110));
-                photo.addActionListener(new ShowImage(photos.get(cpt)));
-
-                gc.gridx = j;
-                galerie.add(photo, gc);
-
-                --nbbuttons;
-                ++cpt;
-            }
+            return photo;
         }
     }
+
+    public class ViewPhoto extends JPanel {
+        private JPanel contentPanel = new JPanel(new BorderLayout());
+
+        // Titre
+        private JPanel up = new JPanel(new BorderLayout());
+        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
+        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
+
+        //Image
+        private OwnPanel imagePanel;
+
+        // Changement d'image
+        private JPanel buttons = new JPanel(new BorderLayout());
+        private OwnButton next = new OwnButton(new ImageIcon("img/icons/right.png"),40,40);
+        private OwnButton previous = new OwnButton(new ImageIcon("img/icons/left.png"),40,40);
+
+
+        public ViewPhoto(Photo photo) {
+
+            imagePanel = new OwnPanel(photo.getImage400().getImage());
+            imagePanel.setPreferredSize(new Dimension(400,500));
+
+            back.addActionListener(new BackToGallery());
+            delete.addActionListener(new DeleteImage(photo));
+            up.add(back,BorderLayout.WEST);
+            up.add(delete,BorderLayout.EAST);
+
+            next.addActionListener(new MoveToNext(photo));
+            previous.addActionListener(new MoveToPrevious(photo));
+            buttons.add(next,BorderLayout.EAST);
+            buttons.add(previous,BorderLayout.WEST);
+
+            contentPanel.add(up,BorderLayout.NORTH);
+            contentPanel.add(imagePanel,BorderLayout.CENTER);
+            contentPanel.add(buttons,BorderLayout.SOUTH);
+
+            add(contentPanel);
+        }
+
+        public void deleteImage(Photo photo){
+            photos.remove(photo);
+
+            serializeObject();
+            galleryStart.updateGallery(photos);
+        }
+    }
+
 
     public void serializeObject()
     {
@@ -163,30 +150,16 @@ public class GalleryApp extends JPanel {
     }
 
 
-    public void updateGalerie(){
-
-        panelPhoto.removeAll();
-        panelPhoto.add(galleriePane, BorderLayout.CENTER);
-
-        galerie.removeAll();
-        galleriePane.setViewportView(galerie);
-
-        affichePhotos();
-    }
-
-
     public void addImage(String nom, File file){
         int id = getNextId();
 
         Photo photo = new Photo(id,nom,file);
         photos.add(photo);
 
-        updateGalerie();
+        galleryStart.updateGallery(photos);
         serializeObject();
 
     }
-
-
 
 
     public int getNextId(){
@@ -198,51 +171,6 @@ public class GalleryApp extends JPanel {
         }
     }
 
-
-    public class ViewPhoto extends JPanel {
-        private JPanel contentPanel = new JPanel(new BorderLayout());
-
-        // Titre
-        private JPanel up = new JPanel(new BorderLayout());
-        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
-        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
-
-
-        // Changement d'image
-        private JPanel buttons = new JPanel(new BorderLayout());
-        private OwnButton next = new OwnButton(new ImageIcon("img/icons/right.png"),40,40);
-        private OwnButton previous = new OwnButton(new ImageIcon("img/icons/left.png"),40,40);
-
-
-        public ViewPhoto(Photo photo) {
-
-            OwnPanel imagePanel = new OwnPanel(photo.getImage400().getImage());
-            imagePanel.setPreferredSize(new Dimension(400,500));
-
-            back.addActionListener(new BackToGallery());
-            delete.addActionListener(new DeleteImage(photo));
-            up.add(back,BorderLayout.WEST);
-            up.add(delete,BorderLayout.EAST);
-
-            next.addActionListener(new MoveToNext(photo));
-            previous.addActionListener(new MoveToPrevious(photo));
-            buttons.add(next,BorderLayout.EAST);
-            buttons.add(previous,BorderLayout.WEST);
-
-            contentPanel.add(up,BorderLayout.NORTH);
-            contentPanel.add(imagePanel,BorderLayout.CENTER);
-            contentPanel.add(buttons,BorderLayout.SOUTH);
-
-            add(contentPanel);
-        }
-
-        public void deleteImage(Photo photo){
-            photos.remove(photo);
-
-            serializeObject();
-            updateGalerie();
-        }
-    }
 
     public class Back implements ActionListener {
 
@@ -260,7 +188,7 @@ public class GalleryApp extends JPanel {
             choix.addChoosableFileFilter(new FileNameExtensionFilter("Images Files","jpg","png"));
             choix.setAcceptAllFileFilterUsed(true);
 
-            int retour = choix.showOpenDialog(panelPhoto);
+            int retour = choix.showOpenDialog(galleryStart.getPanelPhoto());
             if (retour == JFileChooser.APPROVE_OPTION){
                 String nom = choix.getSelectedFile().getName();
                 File file = choix.getSelectedFile().getAbsoluteFile();

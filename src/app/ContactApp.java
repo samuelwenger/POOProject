@@ -99,7 +99,7 @@ public class ContactApp extends JPanel {
         ArrayList<Contact> contactsTries = (ArrayList<Contact>) contacts.clone();
         contactsTries = TriageContacts(contactsTries);
 
-        JButton contact;
+        OwnButton contact;
 
         gc.gridwidth=1;
         gc.gridheight=1;
@@ -123,9 +123,8 @@ public class ContactApp extends JPanel {
                 gc.weighty = 1;
             }
 
-            contact = new JButton(contactsTries.get(i).getFirstname() + " " + contactsTries.get(i).getName());
-            contact.setIcon(getContactImage8080(contactsTries.get(i)));
-            contact.setPreferredSize(new Dimension(380,80));
+            contact = new OwnButton(getContactImage8080(contactsTries.get(i)), contactsTries.get(i).getFirstname() + " " + contactsTries.get(i).getName(),0,80, 20);
+        //    contact.setPreferredSize(new Dimension(380,80));
 
             contactsList.add(contact, gc);
             contact.addActionListener(new ShowContact(contactsTries.get(i)));
