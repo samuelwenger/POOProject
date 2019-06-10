@@ -42,6 +42,14 @@ public class LockPanel extends JPanel {
 
         contentPanel.setPreferredSize(new Dimension(400,700));
 
+        heure.setHorizontalAlignment(JLabel.CENTER);
+        heure.setVerticalAlignment(JLabel.BOTTOM);
+        heure.setFont(new Font("Bahnschrift", Font.PLAIN,75));
+
+        date.setHorizontalAlignment(JLabel.CENTER);
+        date.setVerticalAlignment(JLabel.TOP);
+        date.setFont(new Font("Bahnschrift", Font.PLAIN,20));
+
         main.add(heure);
         main.add(date);
 
