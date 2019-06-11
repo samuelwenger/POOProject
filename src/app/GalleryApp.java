@@ -5,6 +5,7 @@ import base.OwnButton;
 import base.OwnPanel;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -75,10 +76,11 @@ public class GalleryApp extends JPanel {
         private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
 
         //Image
+        private OwnPanel main = new OwnPanel(new BorderLayout());
         private OwnPanel imagePanel;
 
         // Changement d'image
-        private JPanel buttons = new JPanel(new BorderLayout());
+        private OwnPanel buttons = new OwnPanel(new BorderLayout());
         private OwnButton next = new OwnButton(new ImageIcon("img/icons/right.png"),40,40);
         private OwnButton previous = new OwnButton(new ImageIcon("img/icons/left.png"),40,40);
 
@@ -86,11 +88,45 @@ public class GalleryApp extends JPanel {
         public ViewPhoto(Photo photo) {
 
             setBackground(Color.BLACK);
-            //.setBackground(Color.BLACK);
-            buttons.setBackground(Color.BLACK);
+            contentPanel.setBackground(Color.BLACK);
+
+            contentPanel.setPreferredSize(new Dimension(400,700));
+
+            back.addActionListener(new BackToGallery());
+            delete.addActionListener(new DeleteImage(photo));
+            next.addActionListener(new MoveToNext(photo));
+            previous.addActionListener(new MoveToPrevious(photo));
+
+            up.add(back,BorderLayout.WEST);
+            up.add(delete,BorderLayout.EAST);
+
+
+         //   imagePanel.setLocation(0,100);
+
+           // buttons.add(previous, BorderLayout.WEST);
+           // buttons.add(next, BorderLayout.EAST);
 
             imagePanel = new OwnPanel(photo.getImage400().getImage());
-            imagePanel.setPreferredSize(new Dimension(400,500));
+            imagePanel.add(previous, BorderLayout.WEST);
+            imagePanel.add(next, BorderLayout.EAST);
+
+            System.out.println(photo.getImage400().getImage().getHeight(null));
+            System.out.println(photo.getImage400().getImage().getWidth(null));
+
+            main.add(imagePanel);
+           // main.add(buttons);
+
+
+            contentPanel.add(up, BorderLayout.NORTH);
+            contentPanel.add(main,BorderLayout.CENTER);
+
+           /*
+            buttons.setBackground(Color.BLACK);
+
+
+
+           // imagePanel = new OwnPanel(photo.getImage400().getImage());
+           // imagePanel.setPreferredSize(new Dimension(400,500));
 
             back.addActionListener(new BackToGallery());
             delete.addActionListener(new DeleteImage(photo));
@@ -105,6 +141,8 @@ public class GalleryApp extends JPanel {
             contentPanel.add(up,BorderLayout.NORTH);
             contentPanel.add(imagePanel,BorderLayout.CENTER);
             contentPanel.add(buttons,BorderLayout.SOUTH);
+
+            */
 
             add(contentPanel);
         }

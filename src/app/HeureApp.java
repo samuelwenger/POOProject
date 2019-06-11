@@ -20,7 +20,7 @@ public class HeureApp extends JPanel{
     private OwnPanel panelBack = new OwnPanel(new FlowLayout());
     private OwnPanel contentPanel = new OwnPanel(new ImageIcon("img/phoneBackground.png").getImage());
 
-    private OwnButton back= new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
+    private OwnButton back= new OwnButton(new ImageIcon("img/icons/backwhite.png"),40,40);
 
     //heure
     private JLabel heure = new JLabel();

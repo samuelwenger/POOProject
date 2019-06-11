@@ -35,7 +35,7 @@ public class Launcher extends Start {
 
     private OwnButton contact = new OwnButton(new ImageIcon("img/icons/contacts.png"),100,100);
     private OwnButton galerie = new OwnButton(new ImageIcon("img/icons/gallery.png"),100,100);
-    private OwnButton heureapp = new OwnButton(new ImageIcon("img/icons/gallery.png"),100,100);
+    private OwnButton heureapp = new OwnButton(new ImageIcon("img/icons/hour.png"),100,100);
 
 
 
