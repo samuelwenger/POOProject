@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e850b1d8-37f1-4076-90fe-082e74bb6a56" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/icons/backwhite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/icons/hour.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/icons/mail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/icons/phone.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/icons/left.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/icons/left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/icons/right.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/icons/right.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serials/contactslist.ser" beforeDir="false" afterPath="$PROJECT_DIR$/serials/contactslist.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serials/photos.ser" beforeDir="false" afterPath="$PROJECT_DIR$/serials/photos.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ContactApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ContactApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/GalleryApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/GalleryApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/HeureApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/HeureApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/OwnPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/OwnPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Start.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/ContactApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
+            <state relative-caret-position="-4675">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,10 +39,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/base/Start.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="18" column="81" selection-start-line="18" selection-start-column="81" selection-end-line="18" selection-end-column="81" />
+            <state relative-caret-position="252">
+              <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2382#2383#0" expanded="true" />
+                <element signature="e#2419#2420#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/base/GalleryPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="357">
               <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -62,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/GalleryApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+            <state relative-caret-position="990">
+              <caret line="104" selection-start-line="104" selection-end-line="104" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GalleryApp#0;class#GalleryApp#0" />
@@ -88,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/base/OwnPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="323">
               <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -121,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/Launcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="476">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="170">
+              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,9 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>afficheCon</find>
-      <find>save</find>
-      <find>PHOTO.SET</find>
       <find>checkFields</find>
       <find>checkFiel</find>
       <find>defaultImage8080</find>
@@ -197,8 +194,11 @@
       <find>ShowContact</find>
       <find>get</find>
       <find>currentTime</find>
-      <find>CurrentTime</find>
       <find>ViewContact</find>
+      <find>view</find>
+      <find>mail</find>
+      <find>ALWAY</find>
+      <find>CurrentTime</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -223,18 +223,19 @@
         <option value="$PROJECT_DIR$/src/app/LockPanel.java" />
         <option value="$PROJECT_DIR$/src/base/ContactGestion.java" />
         <option value="$PROJECT_DIR$/src/base/GalleryPanel.java" />
-        <option value="$PROJECT_DIR$/src/app/ContactApp.java" />
         <option value="$PROJECT_DIR$/src/app/MainFrame.java" />
-        <option value="$PROJECT_DIR$/src/base/Start.java" />
-        <option value="$PROJECT_DIR$/src/app/Launcher.java" />
         <option value="$PROJECT_DIR$/src/app/HeureApp.java" />
         <option value="$PROJECT_DIR$/src/base/OwnPanel.java" />
         <option value="$PROJECT_DIR$/src/app/GalleryApp.java" />
+        <option value="$PROJECT_DIR$/src/app/ContactApp.java" />
+        <option value="$PROJECT_DIR$/src/base/Start.java" />
+        <option value="$PROJECT_DIR$/src/app/Launcher.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="504" />
+    <option name="x" value="2638" />
+    <option name="y" value="126" />
     <option name="width" value="1440" />
     <option name="height" value="810" />
   </component>
@@ -296,7 +297,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560202584760" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560287072524" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -372,7 +373,7 @@
       <workItem from="1560083345848" duration="4964000" />
       <workItem from="1560151935589" duration="9553000" />
       <workItem from="1560171350041" duration="6115000" />
-      <workItem from="1560277857292" duration="600000" />
+      <workItem from="1560277857292" duration="5943000" />
     </task>
     <task id="LOCAL-00001" summary="Essai de commit">
       <created>1556966376177</created>
@@ -542,14 +543,22 @@
       <option name="project" value="LOCAL" />
       <updated>1560175058510</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Logo app3 &#10;&#10;11.06.2019">
+      <created>1560281858529</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1560281858529</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218977000" />
+    <option name="totallyTimeSpent" value="224320000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="1" />
@@ -560,7 +569,7 @@
       <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.33208954" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49530202" weight="0.23618636" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49530202" visible="true" weight="0.23618636" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -645,14 +654,15 @@
     <MESSAGE value="Modifications des boutons par des icônes&#10;&#10;09.06.2019" />
     <MESSAGE value="Affichage des contacts&#10;Héritage dans GalleryApp pour l'affichage des images&#10;&#10;10.06.2019" />
     <MESSAGE value="heure mise à jour automatique&#10;&#10;10.06.2019" />
-    <option name="LAST_COMMIT_MESSAGE" value="heure mise à jour automatique&#10;&#10;10.06.2019" />
+    <MESSAGE value="Logo app3 &#10;&#10;11.06.2019" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logo app3 &#10;&#10;11.06.2019" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/app/GalleryApp.java</url>
-          <line>246</line>
+          <line>215</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -745,46 +755,6 @@
     <entry file="file://$PROJECT_DIR$/img/phoneBackground.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/ContactApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/Start.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="81" selection-start-line="18" selection-start-column="81" selection-end-line="18" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/GalleryPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/OwnPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/HeureApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -805,26 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/base/ContactGestion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
@@ -835,10 +785,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/OwnPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/GalleryPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ContactApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4675">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Start.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2382#2383#0" expanded="true" />
+            <element signature="e#2419#2420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/GalleryApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+        <state relative-caret-position="990">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#GalleryApp#0;class#GalleryApp#0" />
@@ -852,6 +854,16 @@
             <element signature="class#BackToGallery#0;class#GalleryApp#0" />
             <element signature="class#MoveToNext#0;class#GalleryApp#0" />
             <element signature="class#MoveToPrevious#0;class#GalleryApp#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/Launcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

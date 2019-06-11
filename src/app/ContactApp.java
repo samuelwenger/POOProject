@@ -77,7 +77,6 @@ public class ContactApp extends JPanel {
         titrePanel.add(addContact, BorderLayout.EAST);
 
         // Panel des contacts
-        contactsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         contactsPanel.add(contactsScrollPane, BorderLayout.CENTER);
 
         // Panel de l'application
@@ -230,8 +229,14 @@ public class ContactApp extends JPanel {
         private JLabel name = new JLabel();
         private JLabel tel = new JLabel();
         private JLabel mail = new JLabel();
+        private JLabel telIcon = new JLabel(new ImageIcon("img/icons/phone.png"));
+        private JLabel mailIcon = new JLabel(new ImageIcon("img/icons/mail.png"));
 
-        private JPanel infos = new JPanel(new GridLayout(3,1));
+        private OwnPanel telPanel = new OwnPanel(new FlowLayout(FlowLayout.LEFT));
+        private OwnPanel mailPanel = new OwnPanel(new FlowLayout(FlowLayout.LEFT));
+
+        private JPanel infos = new JPanel(new GridLayout(5,1));
+
 
         // Titre + image
         private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
@@ -239,11 +244,11 @@ public class ContactApp extends JPanel {
         private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
         private OwnPanel buttonsright = new OwnPanel(new FlowLayout());
         private OwnPanel buttons = new OwnPanel(new BorderLayout());
+        private JPanel up = new JPanel();
 
         private ImageIcon contactImage;
         private OwnPanel panelImage;
 
-        private JPanel up = new JPanel();
 
 
         public ViewContact(Contact contact) {
@@ -254,7 +259,6 @@ public class ContactApp extends JPanel {
             contentPanel.setBackground(color);
             up.setBackground(color);
             infos.setBackground(color);
-
 
             contactImage = getContactImage(contact);
             panelImage = new OwnPanel(contactImage.getImage());
@@ -268,19 +272,16 @@ public class ContactApp extends JPanel {
             edit.addActionListener(new EditContact(contact));
             delete.addActionListener(new DeleteContact(contact));
 
-
             buttonsright.add(edit);
             buttonsright.add(delete);
             buttons.add(back, BorderLayout.WEST);
             buttons.add(buttonsright, BorderLayout.EAST);
 
-            up.setPreferredSize(new Dimension(400,350));
+            up.setPreferredSize(new Dimension(400,300));
 
             panelImage.add(buttons, BorderLayout.NORTH);
 
             up.add(panelImage);
-
-
 
             // Panel des données du contact
             name.setText(contact.getFirstname() + " " + contact.getName());
@@ -288,9 +289,20 @@ public class ContactApp extends JPanel {
             mail.setText(contact.getMail());
 
             name.setFont(new Font("Bahnshrift",Font.BOLD,30));
+            tel.setFont(new Font("Bahnshrift",Font.PLAIN,18));
+            mail.setFont(new Font("Bahnshrift",Font.PLAIN,18));
+
+            telPanel.add(telIcon);
+            telPanel.add(tel);
+
+            if(!mail.getText().isEmpty()) {
+                mailPanel.add(mailIcon);
+                mailPanel.add(mail);
+            }
+
             infos.add(name);
-            infos.add(tel);
-            infos.add(mail);
+            infos.add(telPanel);
+            infos.add(mailPanel);
 
 
             // Ajout au panel général

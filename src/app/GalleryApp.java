@@ -76,7 +76,7 @@ public class GalleryApp extends JPanel {
         private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
 
         //Image
-        private OwnPanel main = new OwnPanel(new BorderLayout());
+        private OwnPanel main = new OwnPanel(new GridBagLayout());
         private OwnPanel imagePanel;
 
         // Changement d'image
@@ -87,11 +87,11 @@ public class GalleryApp extends JPanel {
 
         public ViewPhoto(Photo photo) {
 
+            contentPanel.setPreferredSize(new Dimension(400,700));
+
             setBackground(Color.BLACK);
             contentPanel.setBackground(Color.BLACK);
 
-            contentPanel.setPreferredSize(new Dimension(400,700));
-
             back.addActionListener(new BackToGallery());
             delete.addActionListener(new DeleteImage(photo));
             next.addActionListener(new MoveToNext(photo));
@@ -100,49 +100,18 @@ public class GalleryApp extends JPanel {
             up.add(back,BorderLayout.WEST);
             up.add(delete,BorderLayout.EAST);
 
-
-         //   imagePanel.setLocation(0,100);
-
-           // buttons.add(previous, BorderLayout.WEST);
-           // buttons.add(next, BorderLayout.EAST);
+            int width = photo.getImage400().getImage().getWidth(null);
+            int height = photo.getImage400().getImage().getHeight(null);
 
             imagePanel = new OwnPanel(photo.getImage400().getImage());
+            imagePanel.setPreferredSize(new Dimension(width, height));
             imagePanel.add(previous, BorderLayout.WEST);
             imagePanel.add(next, BorderLayout.EAST);
 
-            System.out.println(photo.getImage400().getImage().getHeight(null));
-            System.out.println(photo.getImage400().getImage().getWidth(null));
-
             main.add(imagePanel);
-           // main.add(buttons);
-
 
             contentPanel.add(up, BorderLayout.NORTH);
             contentPanel.add(main,BorderLayout.CENTER);
-
-           /*
-            buttons.setBackground(Color.BLACK);
-
-
-
-           // imagePanel = new OwnPanel(photo.getImage400().getImage());
-           // imagePanel.setPreferredSize(new Dimension(400,500));
-
-            back.addActionListener(new BackToGallery());
-            delete.addActionListener(new DeleteImage(photo));
-            up.add(back,BorderLayout.WEST);
-            up.add(delete,BorderLayout.EAST);
-
-            next.addActionListener(new MoveToNext(photo));
-            previous.addActionListener(new MoveToPrevious(photo));
-            buttons.add(next,BorderLayout.EAST);
-            buttons.add(previous,BorderLayout.WEST);
-
-            contentPanel.add(up,BorderLayout.NORTH);
-            contentPanel.add(imagePanel,BorderLayout.CENTER);
-            contentPanel.add(buttons,BorderLayout.SOUTH);
-
-            */
 
             add(contentPanel);
         }

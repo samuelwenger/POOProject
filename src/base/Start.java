@@ -19,6 +19,7 @@ public class Start extends JPanel {
     private OwnButton off = new OwnButton(new ImageIcon("img/icons/shutdown.png"),70,70);
 
     private JLabel heure = new JLabel();
+    private JLabel heuresmall = new JLabel();
     final private DateFormat DATEFORMAT = new SimpleDateFormat("HH:mm");
     private Timer timer = new Timer(0, new CurrentTime());
 
@@ -80,6 +81,10 @@ public class Start extends JPanel {
         return formatteddate;
     }
 
+    public JLabel getHeureSmall () {
+        return heuresmall;
+    }
+
     public OwnPanel getHeader() {
         return header;
     }
@@ -93,7 +98,9 @@ public class Start extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             Calendar now = Calendar.getInstance();
-            heure.setText(DATEFORMAT.format(now.getTime()));
+            String text = DATEFORMAT.format(now.getTime());
+            heure.setText(text);
+            heuresmall.setText(text);
             repaint();
         }
     }

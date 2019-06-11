@@ -8,9 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Launcher extends Start {
 
@@ -18,7 +15,6 @@ public class Launcher extends Start {
 
 
     //header
-    private JLabel heure = new JLabel(getFormattedtime());
     private JLabel batterie = new JLabel("B");
     private JLabel wifi = new JLabel ("W");
     private JLabel reseau = new JLabel("R");
@@ -44,12 +40,12 @@ public class Launcher extends Start {
         this.mainFrame = mainFrame;
 
         //ajout de la barre supérieur
-        heure.setForeground(Color.WHITE);
+        getHeureSmall().setForeground(Color.WHITE);
         batterie.setForeground(Color.WHITE);
         wifi.setForeground(Color.WHITE);
         reseau.setForeground(Color.WHITE);
 
-        leftheader.add(heure);
+        leftheader.add(getHeureSmall());
         rightheader.add(batterie);
         rightheader.add(wifi);
         rightheader.add(reseau);
@@ -71,13 +67,6 @@ public class Launcher extends Start {
         galerie.addActionListener(new ClicGalleryApp());
         heureapp.addActionListener(new ClicHeureApp());
 
-       /*
-        header.setOpaque(false);
-        main.setOpaque(false);
-        footer.setOpaque(false);
-        leftheader.setOpaque(false);
-        rightheader.setOpaque(false);
-        */
 
     }
 
