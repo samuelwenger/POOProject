@@ -50,7 +50,7 @@ public class GalleryApp extends JPanel {
      */
     public class GalleryStart extends GalleryPanel {
 
-        private OwnButton add = new OwnButton(new ImageIcon("img/icons/addimage.png"),40,40);
+        private OwnButton add = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/addimage.png")),40,40);
 
 
         public GalleryStart(ArrayList<Photo> photos, String titreEcran) {
@@ -80,8 +80,8 @@ public class GalleryApp extends JPanel {
 
         // Titre
         private JPanel up = new JPanel(new BorderLayout());
-        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
-        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
+        private OwnButton back = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/back.png")),40,40);
+        private OwnButton delete = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/delete.png")),40,40);
 
         //Image
         private OwnPanel main = new OwnPanel(new GridBagLayout());
@@ -89,8 +89,8 @@ public class GalleryApp extends JPanel {
 
         // Changement d'image
         private OwnPanel buttons = new OwnPanel(new BorderLayout());
-        private OwnButton next = new OwnButton(new ImageIcon("img/icons/right.png"),40,40);
-        private OwnButton previous = new OwnButton(new ImageIcon("img/icons/left.png"),40,40);
+        private OwnButton next = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/right.png")),40,40);
+        private OwnButton previous = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/left.png")),40,40);
 
 
         public ViewPhoto(Photo photo) {

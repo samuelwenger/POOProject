@@ -28,11 +28,11 @@ public class Launcher extends Start {
 
 
     //Buttons
-    private OwnButton lock = new OwnButton(new ImageIcon("img/icons/unlock.png"),70,70);
+    private OwnButton lock = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/unlock.png")),70,70);
 
-    private OwnButton contact = new OwnButton(new ImageIcon("img/icons/contacts.png"),100,100);
-    private OwnButton galerie = new OwnButton(new ImageIcon("img/icons/gallery.png"),100,100);
-    private OwnButton heureapp = new OwnButton(new ImageIcon("img/icons/hour.png"),100,100);
+    private OwnButton contact = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/contacts.png")),100,100);
+    private OwnButton galerie = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/gallery.png")),100,100);
+    private OwnButton heureapp = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/hour.png")),100,100);
 
 
 
@@ -112,7 +112,6 @@ public class Launcher extends Start {
             mainFrame.getCardLayout().show(mainFrame.getContentPanel(),"lock");
         }
     }
-
 
 
 }

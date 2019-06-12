@@ -19,8 +19,8 @@ public class ContactApp extends JPanel {
 
     private MainFrame mainFrame;
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
-    private ImageIcon defaultImage = new ImageIcon("img/Background.jpg");
-    private ImageIcon defaultImage8080 = new ImageIcon("img/contactProfile.jpg");
+    private ImageIcon defaultImage = new ImageIcon(this.getClass().getResource("/Background.jpg"));
+    private ImageIcon defaultImage8080 = new ImageIcon(this.getClass().getResource("/contactProfile.jpg"));
     private ImageIcon imgTemp = null;
     private ImageIcon img8080Temp = null;
 
@@ -39,8 +39,8 @@ public class ContactApp extends JPanel {
     // Titre
     private JPanel titrePanel = new JPanel(new BorderLayout());
     private JLabel titreApp = new JLabel("Contacts");
-    private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
-    private OwnButton addContact = new OwnButton(new ImageIcon("img/icons/add.png"),40,40);
+    private OwnButton back = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/back.png")),40,40);
+    private OwnButton addContact = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/add.png")),40,40);
 
     // Liste contacts
     private JPanel contactsPanel = new JPanel(new BorderLayout());
@@ -130,7 +130,6 @@ public class ContactApp extends JPanel {
             }
 
             contact = new OwnButton(getContactImage8080(contactsTries.get(i)), contactsTries.get(i).getFirstname() + " " + contactsTries.get(i).getName(),0,80, 20);
-        //    contact.setPreferredSize(new Dimension(380,80));
 
             contactsList.add(contact, gc);
             contact.addActionListener(new ShowContact(contactsTries.get(i)));
@@ -227,8 +226,8 @@ public class ContactApp extends JPanel {
         private JLabel name = new JLabel();
         private JLabel tel = new JLabel();
         private JLabel mail = new JLabel();
-        private JLabel telIcon = new JLabel(new ImageIcon("img/icons/phone.png"));
-        private JLabel mailIcon = new JLabel(new ImageIcon("img/icons/mail.png"));
+        private JLabel telIcon = new JLabel(new ImageIcon(this.getClass().getResource("/icons/phone.png")));
+        private JLabel mailIcon = new JLabel(new ImageIcon(this.getClass().getResource("/icons/mail.png")));
 
         private OwnPanel telPanel = new OwnPanel(new FlowLayout(FlowLayout.LEFT));
         private OwnPanel mailPanel = new OwnPanel(new FlowLayout(FlowLayout.LEFT));
@@ -237,9 +236,9 @@ public class ContactApp extends JPanel {
 
 
         // Titre + image
-        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40, "transparent");
-        private OwnButton edit = new OwnButton(new ImageIcon("img/icons/edit.png"),40,40, "transparent");
-        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40, "transparent");
+        private OwnButton back = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/back.png")),40,40, "transparent");
+        private OwnButton edit = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/edit.png")),40,40, "transparent");
+        private OwnButton delete = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/delete.png")),40,40, "transparent");
         private OwnPanel buttonsright = new OwnPanel(new FlowLayout());
         private OwnPanel buttons = new OwnPanel(new BorderLayout());
         private JPanel up = new JPanel();

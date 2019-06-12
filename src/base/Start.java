@@ -14,12 +14,12 @@ import java.util.Date;
  */
 public abstract class Start extends JPanel {
 
-    private OwnPanel contentPanel = new OwnPanel (new ImageIcon("img/phoneBackground.png").getImage());
+    private OwnPanel contentPanel = new OwnPanel (new ImageIcon(this.getClass().getResource("/phoneBackground.png")).getImage());
 
     private OwnPanel buttonpanel = new OwnPanel(new FlowLayout());
     private OwnPanel header = new OwnPanel(new GridLayout(1,2));
     private OwnPanel main = new OwnPanel (new GridLayout(5,1));
-    private OwnButton off = new OwnButton(new ImageIcon("img/icons/shutdown.png"),70,70);
+    private OwnButton off = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/shutdown.png")),70,70);
 
     private JLabel heure = new JLabel();
     private JLabel heuresmall = new JLabel();

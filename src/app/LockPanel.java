@@ -13,7 +13,7 @@ public class LockPanel extends Start {
 
     private MainFrame mainFrame;
 
-    private OwnButton unlock = new OwnButton(new ImageIcon("img/icons/unlock.png"),70,70);
+    private OwnButton unlock = new OwnButton(new ImageIcon(this.getClass().getResource("/icons/unlock.png")),70,70);
 
 
     public LockPanel(MainFrame mainFrame){
