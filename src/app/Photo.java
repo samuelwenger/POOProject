@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
+/**
+ * Classe gérant la création des objets Photo
+ */
 public class Photo implements Serializable {
 
     private int id;
@@ -23,6 +26,13 @@ public class Photo implements Serializable {
     private ImageIcon image8080;
 
 
+    /**
+     * Constructeur de l'objet
+     *
+     * @param id
+     * @param name
+     * @param file
+     */
     public Photo(int id, String name, File file) {
 
         try {
@@ -45,6 +55,13 @@ public class Photo implements Serializable {
     }
 
 
+    /**
+     * Cette méthode retourne une nouvelle image resize à la taille souhaitée
+     *
+     * @param newLargeur
+     * @param newHauteur
+     * @return
+     */
     public ImageIcon resizeImage(double newLargeur, double newHauteur) {
 
         Image resizedImage;
@@ -56,6 +73,13 @@ public class Photo implements Serializable {
 
     }
 
+    /**
+     * Cette màthode retourne une nouvelle image rognée à la taille souhaitée
+     *
+     * @param largeurDesiree
+     * @param hauteurDesiree
+     * @return
+     */
     public ImageIcon cropImage (double largeurDesiree, double hauteurDesiree){
 
         BufferedImage scaledImage;
@@ -78,10 +102,6 @@ public class Photo implements Serializable {
 
     }
 
-
-    public String getName() {
-        return name;
-    }
 
     public ImageIcon getImage100100(){
         return image100100;

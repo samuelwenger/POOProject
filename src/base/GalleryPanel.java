@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Cette classe abstraite permet la configuration de l'écran utilisé dans les classes ChooseImage et GalleryStart
+ */
 public abstract class GalleryPanel extends JPanel {
 
     private JPanel content = new JPanel(new BorderLayout());
@@ -24,6 +27,12 @@ public abstract class GalleryPanel extends JPanel {
     private JPanel gallery = new JPanel(new GridBagLayout());
     private GridBagConstraints gc = new GridBagConstraints();
 
+    /**
+     * Constructeur du panel utilisé depuis GalleryStart
+     *
+     * @param photos
+     * @param titreEcran
+     */
     public GalleryPanel(ArrayList<Photo> photos, String titreEcran) {
         this.photos = photos;
         title.setText(titreEcran);
@@ -31,6 +40,13 @@ public abstract class GalleryPanel extends JPanel {
         init();
     }
 
+    /**
+     * Constructeur du panel utilisé depuis ChooseImage pour l'assignation au contact
+     *
+     * @param photos
+     * @param titreEcran
+     * @param contact
+     */
     public GalleryPanel(ArrayList<Photo> photos, String titreEcran, Contact contact){
         this.photos = photos;
         this.contact = contact;
@@ -39,6 +55,9 @@ public abstract class GalleryPanel extends JPanel {
         init();
     }
 
+    /**
+     * Cette méthode gère l'affichage des deux constructeurs
+     */
     public void init() {
 
         Color color = new Color(255,239, 210);
@@ -66,6 +85,9 @@ public abstract class GalleryPanel extends JPanel {
     }
 
 
+    /**
+     * Cette méthode permet et l'affichage d'un bouton pour chaque image de l'ArrayList
+     */
     public void affichePhotos() {
 
         JButton photo;
@@ -120,6 +142,12 @@ public abstract class GalleryPanel extends JPanel {
     }
 
 
+    /**
+     * Cette méthode crée un bouton pour chaque image de l'ArrayList
+     *
+     * @param cpt
+     * @return
+     */
     public JButton createBoutonPhoto(int cpt) {
 
         OwnButton photo = new OwnButton(photos.get(cpt).getImage100100(),80,80);
@@ -129,6 +157,11 @@ public abstract class GalleryPanel extends JPanel {
 
     }
 
+    /**
+     * Cette méthode permet de mettre à jour la galerie lors d'un ajout ou d'une suppression.
+     *
+     * @param photos
+     */
     public void updateGallery(ArrayList<Photo> photos){
         this.photos = photos;
 
@@ -159,10 +192,6 @@ public abstract class GalleryPanel extends JPanel {
 
     public JPanel getPanelPhoto() {
         return panelPhoto;
-    }
-
-    public JPanel getGallery () {
-        return gallery;
     }
 
     public JPanel getUp () {

@@ -3,38 +3,20 @@ package base;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 
+/**
+ * Cette classe permet de créer des boutons contenant une image
+ */
 public class OwnButton extends JButton {
 
-    public OwnButton () {
-        setBorderPainted(false);
-        setBorder(new EmptyBorder(0,0,0, 0));
-        setFocusable(false);
-        setBackground(new Color(0,0,0, 0));
-        setContentAreaFilled(false);
 
-        setLayout(new BorderLayout());
-    }
-
-
-    public OwnButton (ImageIcon image) {
-       // super(image);
-
-
-        setBorderPainted(false);
-        setBorder(new EmptyBorder(0,0,0, 0));
-       // setFocusable(false);
-       // setBackground(new Color(0,0,0, 0));
-      //  setContentAreaFilled(true);
-       // setOpaque();
-
-        setIcon(image);
-
-
-        setLayout(new BorderLayout());
-    }
-
+    /**
+     * Constructeur permettant la création d'un bouton contenant une icône
+     *
+     * @param image
+     * @param width
+     * @param height
+     */
     public OwnButton (ImageIcon image, int width, int height) {
         super(image);
 
@@ -43,14 +25,20 @@ public class OwnButton extends JButton {
         setFocusable(false);
         setBackground(new Color(0,0,0, 0));
         setContentAreaFilled(false);
-     //   setRolloverEnabled(false);
 
         setLayout(new BorderLayout());
-       // setIcon(image);
 
-      //  setPreferredSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(width, height));
     }
 
+    /**
+     * Constructeur permettant la création d'un bouton par dessus un OwnPanel et contenant une icône
+     *
+     * @param image
+     * @param width
+     * @param height
+     * @param text
+     */
     public OwnButton (ImageIcon image, int width, int height, String text) {
         super(image);
 
@@ -63,9 +51,18 @@ public class OwnButton extends JButton {
 
         setLayout(new BorderLayout());
 
-        //  setPreferredSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(width, height));
     }
 
+    /**
+     * Constructeur permettant de créer un bouton contenant l'image du contact et son nom correctement aligné
+     *
+     * @param image
+     * @param text
+     * @param width
+     * @param height
+     * @param taillePolice
+     */
     public OwnButton (ImageIcon image, String text, int width, int height, int taillePolice) {
         super(image);
 

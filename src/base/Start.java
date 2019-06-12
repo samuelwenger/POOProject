@@ -9,6 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Classe abastraite permettant la configuration de l'affiche utilisé dans Launcher et LockPanel
+ */
 public abstract class Start extends JPanel {
 
     private OwnPanel contentPanel = new OwnPanel (new ImageIcon("img/phoneBackground.png").getImage());
@@ -57,11 +60,29 @@ public abstract class Start extends JPanel {
         add(contentPanel);
     }
 
+    /**
+     * Ecouteur permettant d'éteindre le téléphone (sortie de l'application)
+     */
     public class SwitchOff implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
+        }
+    }
+
+    /**
+     * Ecouteur permettant la mise à jour automatique de l'heure
+     */
+    public class CurrentTime implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Calendar now = Calendar.getInstance();
+            String text = DATEFORMAT.format(now.getTime());
+            heure.setText(text);
+            heuresmall.setText(text);
+            repaint();
         }
     }
 
@@ -71,14 +92,6 @@ public abstract class Start extends JPanel {
 
     public OwnButton getOff() {
         return off;
-    }
-
-    public String getFormattedtime(){
-        return heure.getText();
-    }
-
-    public String getFormatteddate() {
-        return formatteddate;
     }
 
     public JLabel getHeureSmall () {
@@ -93,16 +106,6 @@ public abstract class Start extends JPanel {
         return main;
     }
 
-    public class CurrentTime implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Calendar now = Calendar.getInstance();
-            String text = DATEFORMAT.format(now.getTime());
-            heure.setText(text);
-            heuresmall.setText(text);
-            repaint();
-        }
-    }
 
 }

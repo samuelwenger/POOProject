@@ -38,7 +38,6 @@ public class ContactApp extends JPanel {
 
     // Titre
     private JPanel titrePanel = new JPanel(new BorderLayout());
-
     private JLabel titreApp = new JLabel("Contacts");
     private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
     private OwnButton addContact = new OwnButton(new ImageIcon("img/icons/add.png"),40,40);
@@ -104,7 +103,7 @@ public class ContactApp extends JPanel {
 
     public void afficheContacts() {
         ArrayList<Contact> contactsTries = (ArrayList<Contact>) contacts.clone();
-        contactsTries = TriageContacts(contactsTries);
+        contactsTries = triageContacts(contactsTries);
 
         OwnButton contact;
 
@@ -147,7 +146,7 @@ public class ContactApp extends JPanel {
      * @return
      */
 
-    public ArrayList<Contact> TriageContacts (ArrayList<Contact> contacts) {
+    public ArrayList<Contact> triageContacts (ArrayList<Contact> contacts) {
         Collections.sort(contacts, new Comparator<Contact>() {
             @Override
             public int compare(Contact o1, Contact o2) {
@@ -188,7 +187,7 @@ public class ContactApp extends JPanel {
 
         /**
          * Cette méthode permet la sauvegarde du contact ajouté
-         * en enregistrant les données dans l'ArrayList
+         * en enregistrant un nouvel objet dans l'ArrayList
          */
         public void saveNewContact() {
             int id;
@@ -375,21 +374,10 @@ public class ContactApp extends JPanel {
 
     }
 
-    public ImageIcon getContactImage(Contact contact){
-        if(contact.getImage()!=null)
-            return contact.getImage();
-        else
-            return defaultImage;
-    }
 
-    public ImageIcon getContactImage8080(Contact contact){
-        if(contact.getImage()!=null)
-            return contact.getImage8080();
-        else
-            return defaultImage8080;
-    }
-
-
+    /**
+     * Cette classe gère l'écran permettant d'afficher une gallerie pour le choix de l'image à assigner à un contact
+     */
     public class ChooseImage extends GalleryPanel{
 
         private JButton removeImage = new JButton("Supprimer l'image");
@@ -550,6 +538,10 @@ public class ContactApp extends JPanel {
 
     }
 
+
+    /**
+     * Cette classe gère l'écouteur permettant d'accéder au panel de choix d'une image pour le contact
+     */
     public class EditImage implements ActionListener{
 
         private Contact contact;
@@ -569,6 +561,10 @@ public class ContactApp extends JPanel {
         }
     }
 
+
+    /**
+     * Cette classe gère l'écouteur permettant de garder l'image sélectionnée par l'utilisateur et appelle la méthode permettant la mise à jour de l'objet Contact
+     */
     public class SelectPhoto implements ActionListener {
 
         private ImageIcon image;
@@ -596,6 +592,9 @@ public class ContactApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant de revenir sur la page d'édition d'un contact
+     */
     public class BackToEdit implements ActionListener{
 
         private Contact contact;
@@ -687,4 +686,20 @@ public class ContactApp extends JPanel {
             }
         }
     }
+
+
+    public ImageIcon getContactImage(Contact contact){
+        if(contact.getImage()!=null)
+            return contact.getImage();
+        else
+            return defaultImage;
+    }
+
+    public ImageIcon getContactImage8080(Contact contact){
+        if(contact.getImage()!=null)
+            return contact.getImage8080();
+        else
+            return defaultImage8080;
+    }
+
 }

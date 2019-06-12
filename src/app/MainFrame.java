@@ -4,6 +4,9 @@ package app;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Cette classe gère la fenêtre utilisée pour toutes les applications du smartphone
+ */
 public class MainFrame extends JFrame {
 
     // CardLayout principal

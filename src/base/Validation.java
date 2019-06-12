@@ -9,6 +9,12 @@ import java.awt.*;
  */
 public class Validation {
 
+    /**
+     * Contrôle que le champ donné en paramètre n'est pas vide
+     *
+     * @param textField
+     * @return
+     */
     public boolean isNotEmpty(JTextField textField)
     {
         if (textField.getText().isEmpty())
@@ -22,6 +28,11 @@ public class Validation {
     }
 
 
+    /**
+     * Contrôle que le champ donné en paramètre correspond au pattern défini (téléphone)
+     * @param textField
+     * @return
+     */
     public boolean phoneIsValid(JTextField textField){
         String swissPhoneRegex = "(?:(?:|0{1,2}|\\+{0,2})41(?:|\\(0\\))|0)([1-9]\\d)(\\d{3})(\\d{2})(\\d{2})";
         String emergencyPhoneRegex = "\\d{3}";
@@ -36,6 +47,11 @@ public class Validation {
         }
     }
 
+    /**
+     * Contrôle que le champ donné en paramètre correspond au pattern défini (email)
+     * @param textField
+     * @return
+     */
     public boolean emailIsValid(JTextField textField){
         String emailPattern = "\\b[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
         String voidEmail = "";

@@ -5,7 +5,6 @@ import base.OwnButton;
 import base.OwnPanel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Cette classe gère l'application Galerie du téléphone
+ */
 public class GalleryApp extends JPanel {
 
     private MainFrame mainFrame;
@@ -43,7 +45,9 @@ public class GalleryApp extends JPanel {
     }
 
 
-
+    /**
+     * Cette classe gère l'écran d'accueil de l'application permettant l'affichage de toutes les images ajoutées dans la galerie
+     */
     public class GalleryStart extends GalleryPanel {
 
         private OwnButton add = new OwnButton(new ImageIcon("img/icons/addimage.png"),40,40);
@@ -59,6 +63,7 @@ public class GalleryApp extends JPanel {
 
         }
 
+        @Override
         public JButton createBoutonPhoto(int cpt) {
             JButton photo = super.createBoutonPhoto(cpt);
             photo.addActionListener(new ShowImage(photos.get(cpt)));
@@ -67,6 +72,9 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écran permettant d'afficher chaque photo uniquement et de passer d'une photo à l'autre
+     */
     public class ViewPhoto extends JPanel {
         private JPanel contentPanel = new JPanel(new BorderLayout());
 
@@ -116,6 +124,11 @@ public class GalleryApp extends JPanel {
             add(contentPanel);
         }
 
+        /**
+         * Cette méthode permet de supprimer une image de la gallerie du téléphone et appelle la méthode de sérialisation
+         *
+         * @param photo
+         */
         public void deleteImage(Photo photo){
             photos.remove(photo);
 
@@ -125,6 +138,9 @@ public class GalleryApp extends JPanel {
     }
 
 
+    /**
+     * Cette méthode permet de sérialiser les objets Photo
+     */
     public void serializeObject()
     {
         try
@@ -141,6 +157,9 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    /**
+     * Cette méthode récupère tous les objets Photo déjà séialisés et les retour dans l'ArrayList
+     */
     public void deserializeObject() {
 
         try
@@ -161,6 +180,12 @@ public class GalleryApp extends JPanel {
     }
 
 
+    /**
+     * Cette méthode permet d'ajouter une image à la gallerie
+     *
+     * @param nom
+     * @param file
+     */
     public void addImage(String nom, File file){
         int id = getNextId();
 
@@ -173,6 +198,11 @@ public class GalleryApp extends JPanel {
     }
 
 
+    /**
+     * Cette méthode retourne l'id de l'image suivante
+     *
+     * @return
+     */
     public int getNextId(){
         if(photos.size()==0){
             return 0;
@@ -183,6 +213,9 @@ public class GalleryApp extends JPanel {
     }
 
 
+    /**
+     * Cette classe gère l'écouteur permettant de retourner au Launcher
+     */
     public class Back implements ActionListener {
 
         @Override
@@ -191,6 +224,9 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur qui ouvre la fenêtre permettant le choix d'une image sur l'ordinateur
+     */
     public class AddImage implements ActionListener {
 
         @Override
@@ -208,6 +244,9 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant la suppression d'une image de la galerie
+     */
     public class DeleteImage implements ActionListener{
 
         private Photo photo;
@@ -223,6 +262,10 @@ public class GalleryApp extends JPanel {
         }
     }
 
+
+    /**
+     * Cette classe gère l'écouteur permettant d'accéder à l'écran affichant une seule photo
+     */
     public class ShowImage implements ActionListener {
 
         private Photo photo;
@@ -239,6 +282,9 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant le retour sur l'écran d'accueil de l'application (affichage de toutes les photos)
+     */
     public class BackToGallery implements ActionListener{
 
         @Override
@@ -247,7 +293,10 @@ public class GalleryApp extends JPanel {
         }
     }
 
-    public class MoveToNext implements ActionListener {
+    /**
+     * Cette classe gère l'écouteur permettant le passage à l'image suivante
+     */
+    private class MoveToNext implements ActionListener {
 
         private int actualpostion;
         private int newposition;
@@ -272,6 +321,9 @@ public class GalleryApp extends JPanel {
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant le passage à l'image précédente
+     */
     public class MoveToPrevious implements ActionListener {
 
         private int actualposition;
@@ -298,6 +350,7 @@ public class GalleryApp extends JPanel {
 
         }
     }
+
 
     public ArrayList<Photo> getPhotos () {
         return photos;

@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Cette classe gère l'écran vérouillé
+ */
 public class LockPanel extends Start {
 
     private MainFrame mainFrame;
@@ -23,6 +26,9 @@ public class LockPanel extends Start {
         getButtonpanel().add(getOff());
     }
 
+    /**
+     * Cet écouteur permet l'ouverture de l'écran de démarage (Launcher)
+     */
     public class OpenLauncher implements ActionListener{
 
         @Override

@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Cette classe gère l'écran de démarrage du smartphone
+ */
 public class Launcher extends Start {
 
     private MainFrame mainFrame;
@@ -65,6 +68,9 @@ public class Launcher extends Start {
     }
 
 
+    /**
+     * Cet écouteur permet l'ouverture de l'application ContactApp
+     */
     public class ClicContactApp implements ActionListener {
 
          @Override
@@ -73,6 +79,9 @@ public class Launcher extends Start {
         }
     }
 
+    /**
+     * Cet écouteur permet l'ouverture de l'application GalleryApp
+     */
     public class ClicGalleryApp implements ActionListener {
 
         @Override
@@ -82,6 +91,9 @@ public class Launcher extends Start {
 
     }
 
+    /**
+     * Cet écouteur permet l'ouverture de l'application HeureApp
+     */
     public class ClicHeureApp implements ActionListener{
 
         @Override
@@ -90,6 +102,9 @@ public class Launcher extends Start {
         }
     }
 
+    /**
+     * Cet écouteur permet le vérouillage du smartphone
+     */
     public class Lock implements ActionListener {
 
         @Override

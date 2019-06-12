@@ -107,6 +107,11 @@ public abstract class ContactGestion extends JPanel {
 
     }
 
+    /**
+     * Cette méthode met à jour le panel contenant l'image (temporaire) du contact
+     *
+     * @param imageContact
+     */
     public void updateImagePanel(ImageIcon imageContact) {
         up.remove(imagePanel);
         imagePanel = new OwnPanel(imageContact.getImage());
@@ -158,98 +163,60 @@ public abstract class ContactGestion extends JPanel {
         return res;
     }
 
-    /**
-     * Ce getter permet de récupérer le bouton backButton (retour)
-     * @return
-     */
+
     public JButton getBackButton () {
         return backButton;
     }
 
 
-    /**
-     * Ce getter permet de récupérer le bouton saveButton (sauvegarde)
-     * @return
-     */
     public JButton getSaveButton(){
         return saveButton;
     }
 
-    /**
-     * Ce getter permet de récupérer le nom du contact saisi
-     * @return
-     */
+
     public String getContactName(){
         return fieldName.getText();
     }
 
 
-    /**
-     * Ce getter permet de récupérer le prénom du contact saisi
-     * @return
-     */
     public String getContactFirstname(){
         return fieldFirstname.getText();
     }
 
-    /**
-     * Ce getter permet de récupérer le téléphone du contact saisi
-     * @return
-     */
+
     public String getContactTel(){
         return fieldTel.getText();
     }
 
-    /**
-     * Ce getter permet de récupérer l'adresse mail du contact saisi
-     * @return
-     */
+
     public String getContactMail(){
         return fieldMail.getText();
     }
 
 
-    /**
-     * Ce getter retourne le JTextField pour le nom
-     * @return
-     */
     public JTextField getFieldName(){
         return fieldName;
     }
 
-    /**
-     * Ce getter retourne le JTextField pour le prénom
-     * @return
-     */
+
     public JTextField getFieldFirstname(){
         return fieldFirstname;
     }
 
-    /**
-     * Ce getter retourne le JTextField pour le téléphone
-     * @return
-     */
+
     public JTextField getFieldTel(){
         return fieldTel;
     }
 
-    /**
-     * Ce getter retourne le JTextField pour le mail
-     * @return
-     */
+
     public JTextField getFieldMail(){
         return fieldMail;
     }
+
 
     public JButton getImageButton() {
         return imageButton;
     }
 
-    public OwnPanel getImagePanel() {
-        return imagePanel;
-    }
 
-    public ImageIcon getImageContact() {
-        return imageContact;
-    }
 }

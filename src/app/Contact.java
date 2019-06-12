@@ -3,6 +3,9 @@ package app;
 import javax.swing.*;
 import java.io.Serializable;
 
+/**
+ * Classe gérant la création des objets Contact
+ */
 public class Contact implements Serializable {
 
     private int id;
@@ -13,6 +16,16 @@ public class Contact implements Serializable {
     private ImageIcon image;
     private ImageIcon image8080;
 
+    /**
+     *
+     * Constructeur de l'objet Contact sans image assignée
+     *
+     * @param id
+     * @param name
+     * @param firstname
+     * @param tel
+     * @param mail
+     */
     public Contact(int id, String name, String firstname, String tel, String mail){
         this.id=id;
         this.name=name;
@@ -21,6 +34,19 @@ public class Contact implements Serializable {
         this.mail=mail;
     }
 
+
+    /**
+     *
+     * Constructeur de l'objet Contact avec image assignée
+     *
+     * @param id
+     * @param name
+     * @param firstname
+     * @param tel
+     * @param mail
+     * @param image
+     * @param image8080
+     */
     public Contact(int id, String name, String firstname, String tel, String mail, ImageIcon image, ImageIcon image8080){
         this.id=id;
         this.name=name;

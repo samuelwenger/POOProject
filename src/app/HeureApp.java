@@ -2,7 +2,6 @@ package app;
 
 import base.OwnButton;
 import base.OwnPanel;
-import base.Start;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +11,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Cette classe gère l'application HeureApp qui donne l'heure en temps réel
+ */
 public class HeureApp extends JPanel{
 
     private MainFrame mainFrame;
@@ -52,6 +54,9 @@ public class HeureApp extends JPanel{
 
     }
 
+    /**
+     * Cet écouteur permet la mise à jour automatique de l'heure
+     */
     public class CurrentTime implements ActionListener {
 
         @Override
@@ -62,6 +67,9 @@ public class HeureApp extends JPanel{
         }
     }
 
+    /**
+     * Cette classe gère l'écouteur permettant le retour sur le Launcher
+     */
     public class Back implements ActionListener {
 
         @Override
