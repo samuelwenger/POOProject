@@ -19,15 +19,15 @@ public abstract class ContactGestion extends JPanel {
 
     // Panel de titre
     private JPanel titlePanel = new JPanel(new BorderLayout());
-    private ImageIcon backImage = new ImageIcon("img/icons/back.png");
+    private ImageIcon backImage = new ImageIcon(this.getClass().getResource("/icons/back.png"));
     private OwnButton backButton = new OwnButton(backImage,40,40);
-    private ImageIcon saveImage = new ImageIcon("img/icons/save.png");
+    private ImageIcon saveImage = new ImageIcon(this.getClass().getResource("/icons/save.png"));
     private OwnButton saveButton = new OwnButton(saveImage, 40, 40);
     private JLabel labelTitleApp = new JLabel();
 
 
     // Panel pour l'image du contact
-    private ImageIcon addImage = new ImageIcon("img/icons/addimage.png");
+    private ImageIcon addImage = new ImageIcon(this.getClass().getResource("/icons/addimage.png"));
     private OwnButton imageButton = new OwnButton(addImage,40,40, "transparent");
     private ImageIcon imageContact;
     private OwnPanel imagePanel;
