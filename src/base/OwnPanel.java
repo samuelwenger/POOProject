@@ -15,6 +15,7 @@ public class OwnPanel extends JPanel {
         this.image=image;
 
         setBackground(new Color(0, true));
+        setOpaque(true);
 
         Dimension size = new Dimension(image.getWidth(null), image.getHeight(null));
         setSize(size);
@@ -33,10 +34,6 @@ public class OwnPanel extends JPanel {
         super.paintComponent(g);
     }
 
-    public void changeImage(Image image){
-        this.image = image;
-        new OwnPanel(image);
-    }
 
 }
 

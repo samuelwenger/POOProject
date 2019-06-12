@@ -1,7 +1,6 @@
 package base;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 
@@ -29,7 +28,7 @@ public abstract class ContactGestion extends JPanel {
 
     // Panel pour l'image du contact
     private ImageIcon addImage = new ImageIcon("img/icons/addimage.png");
-    private OwnButton imageButton = new OwnButton(addImage,40,40);
+    private OwnButton imageButton = new OwnButton(addImage,40,40, "transparent");
     private ImageIcon imageContact;
     private OwnPanel imagePanel;
     private OwnPanel imageButtonPanel = new OwnPanel(new BorderLayout());
@@ -44,8 +43,8 @@ public abstract class ContactGestion extends JPanel {
     private JTextField fieldMail = new JTextField();
 
     private JLabel labelName = new JLabel("Nom");
-    private JLabel labelFirstname = new JLabel("Prenom");
-    private JLabel labelTel = new JLabel("Telephone");
+    private JLabel labelFirstname = new JLabel("Prénom");
+    private JLabel labelTel = new JLabel("Téléphone");
     private JLabel labelMail= new JLabel("Mail");
 
 
@@ -83,6 +82,12 @@ public abstract class ContactGestion extends JPanel {
 
 
         // Panel du formulaire
+        labelName.setFont(new Font("Bahnshrift",Font.BOLD,20));
+        labelFirstname.setFont(new Font("Bahnshrift",Font.BOLD,20));
+        labelTel.setFont(new Font("Bahnshrift",Font.BOLD,20));
+        labelMail.setFont(new Font("Bahnshrift",Font.BOLD,20));
+
+
         formPanel.add(labelName);
         formPanel.add(fieldName);
         formPanel.add(labelFirstname);

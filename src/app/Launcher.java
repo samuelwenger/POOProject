@@ -15,9 +15,7 @@ public class Launcher extends Start {
 
 
     //header
-    private JLabel batterie = new JLabel("B");
-    private JLabel wifi = new JLabel ("W");
-    private JLabel reseau = new JLabel("R");
+    private JLabel operator = new JLabel("WENGAL");
 
 
     //SousPanels
@@ -41,14 +39,10 @@ public class Launcher extends Start {
 
         //ajout de la barre supérieur
         getHeureSmall().setForeground(Color.WHITE);
-        batterie.setForeground(Color.WHITE);
-        wifi.setForeground(Color.WHITE);
-        reseau.setForeground(Color.WHITE);
+        operator.setForeground(Color.WHITE);
 
         leftheader.add(getHeureSmall());
-        rightheader.add(batterie);
-        rightheader.add(wifi);
-        rightheader.add(reseau);
+        rightheader.add(operator);
 
         getHeader().add(leftheader);
         getHeader().add(rightheader);

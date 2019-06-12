@@ -36,8 +36,23 @@ public class OwnButton extends JButton {
     }
 
     public OwnButton (ImageIcon image, int width, int height) {
-        //super(image);
+        super(image);
 
+        setBorderPainted(false);
+        setBorder(new EmptyBorder(0,0,0, 0));
+        setFocusable(false);
+        setBackground(new Color(0,0,0, 0));
+        setContentAreaFilled(false);
+     //   setRolloverEnabled(false);
+
+        setLayout(new BorderLayout());
+       // setIcon(image);
+
+      //  setPreferredSize(new Dimension(width, height));
+    }
+
+    public OwnButton (ImageIcon image, int width, int height, String text) {
+        super(image);
 
         setBorderPainted(false);
         setBorder(new EmptyBorder(0,0,0, 0));
@@ -48,9 +63,7 @@ public class OwnButton extends JButton {
 
         setLayout(new BorderLayout());
 
-        setIcon(image);
-
-        setPreferredSize(new Dimension(width, height));
+        //  setPreferredSize(new Dimension(width, height));
     }
 
     public OwnButton (ImageIcon image, String text, int width, int height, int taillePolice) {
@@ -78,12 +91,6 @@ public class OwnButton extends JButton {
 
     }
 
-
-    class MouseHover extends MouseAdapter {
-
-
-
-    }
 
 }
 

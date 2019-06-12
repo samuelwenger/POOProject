@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GalleryPanel extends JPanel {
+public abstract class GalleryPanel extends JPanel {
 
     private JPanel content = new JPanel(new BorderLayout());
 

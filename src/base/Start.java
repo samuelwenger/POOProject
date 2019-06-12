@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Start extends JPanel {
+public abstract class Start extends JPanel {
 
     private OwnPanel contentPanel = new OwnPanel (new ImageIcon("img/phoneBackground.png").getImage());
 

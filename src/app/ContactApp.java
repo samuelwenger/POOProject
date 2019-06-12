@@ -184,7 +184,6 @@ public class ContactApp extends JPanel {
             getBackButton().addActionListener(new BackToContact());
             getSaveButton().addActionListener(new SaveNewContact());
             getImageButton().addActionListener(new EditImage(null));
-
         }
 
         /**
@@ -239,9 +238,9 @@ public class ContactApp extends JPanel {
 
 
         // Titre + image
-        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40);
-        private OwnButton edit = new OwnButton(new ImageIcon("img/icons/edit.png"),40,40);
-        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40);
+        private OwnButton back = new OwnButton(new ImageIcon("img/icons/back.png"),40,40, "transparent");
+        private OwnButton edit = new OwnButton(new ImageIcon("img/icons/edit.png"),40,40, "transparent");
+        private OwnButton delete = new OwnButton(new ImageIcon("img/icons/delete.png"),40,40, "transparent");
         private OwnPanel buttonsright = new OwnPanel(new FlowLayout());
         private OwnPanel buttons = new OwnPanel(new BorderLayout());
         private JPanel up = new JPanel();
@@ -415,8 +414,7 @@ public class ContactApp extends JPanel {
     /**
      * Cette méthode permet la sérialisation de l'ArrayList contenant tous les contacts.
      */
-    public void serializeObject()
-    {
+    public void serializeObject() {
         try
         {
             FileOutputStream fichier = new FileOutputStream("serials/contactslist.ser");
